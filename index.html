@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Futures — Theatre, Tech &amp; European Participation</title>
+<meta name="description" content="Creative Futures: Theatre, Tech and European Participation. Erasmus+ KA153 Mobility of Youth Workers, 22 to 28 November 2026, Amsterdam. Methods, digital activities, toolkit, films, people and photos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2314286B%27/%3E%3Ctext x=%2732%27 y=%2744%27 font-family=%27Arial%27 font-weight=%27900%27 font-size=%2734%27 fill=%27white%27 text-anchor=%27middle%27%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@0,9..144,900;1,9..144,500;1,9..144,900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b2a4a; --navy2:#071d35; --blue:#ff6a4d; --blue2:#ffc83d; --sky:#fbf5ea; --ice:#f6efe0; --green:#b6da4c; --purple:#7a5cff;
+  --ink:#0b2a4a; --slate:#3f5166; --muted:#6b7a8a; --line:#e7dfcf; --white:#fff;
+  --shadow:0 16px 40px rgba(20,40,107,.10); --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+.disp{font-family:'Fraunces','Bricolage Grotesque',sans-serif;letter-spacing:.04em}
+.section-label{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(32px,4.4vw,52px);font-weight:900;line-height:1.05;color:var(--navy);letter-spacing:-.01em}
+.section-title .highlight{color:var(--purple);font-style:italic;font-weight:500}
+.lead{color:var(--slate);max-width:720px;margin:14px auto 0;font-size:16.5px}
+.center{text-align:center}
+section{position:relative}
+/* geometric diagonal stripes like the infopack */
+.geo{background:var(--sky);position:relative;overflow:hidden}
+.geo::before,.geo::after{content:"";position:absolute;inset:-40%;pointer-events:none;
+  background:repeating-linear-gradient(135deg,transparent 0 180px,rgba(11,42,74,.035) 180px 260px)}
+.geo::after{background:repeating-linear-gradient(135deg,transparent 0 420px,rgba(255,255,255,.65) 420px 520px)}
+.geo>*{position:relative;z-index:1}
+.tri{position:absolute;width:0;height:0;border-style:solid;pointer-events:none;z-index:0}
+.tri.a{border-width:0 0 120px 120px;border-color:transparent transparent var(--blue) transparent;opacity:.9}
+.tri.b{border-width:90px 90px 0 0;border-color:var(--navy) transparent transparent transparent}
+.tri.c{border-width:0 70px 70px 0;border-color:transparent var(--blue2) transparent transparent;opacity:.8}
+
+/* nav */
+.scroll-prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--blue2));z-index:1000}
+.nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);text-decoration:none;font-size:18px;letter-spacing:.02em}
+.nav-logo .mark{width:34px;height:34px;border-radius:9px;background:var(--navy);display:grid;place-items:center;color:#fff}
+.nav-logo .mark svg{width:20px;height:20px}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap}
+.nav-links a{text-decoration:none;color:var(--slate);font-weight:600;font-size:13.5px;padding:8px 11px;border-radius:9px;transition:.2s}
+.nav-links a:hover,.nav-links a.active{background:var(--ice);color:var(--navy)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;padding:7px;cursor:pointer;color:var(--navy)}
+.nav-toggle svg{width:22px;height:22px}
+@media(max-width:900px){.nav-inner{flex-wrap:wrap;padding:10px 16px}.nav-toggle{display:block}.nav-links{display:none;flex-basis:100%;order:3;flex-direction:column;gap:2px;padding:10px 0 6px;border-top:1px solid var(--line);margin-top:10px}.nav-links.open{display:flex}.nav-links a{padding:11px 12px;font-size:15px;border-radius:10px}}
+
+/* logo bar */
+.eu-logobar{background:#fff;border-bottom:1px solid var(--line);padding:12px 24px;display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap}
+.eu-logobar.bottom{border-top:1px solid var(--line);border-bottom:none}
+.eu-logo{display:inline-flex;align-items:center;height:48px}
+.eu-logo svg,.eu-logo img{height:48px;width:auto}
+.eu-logo.vmdo img{height:44px}
+
+/* hero */
+.hero{min-height:88vh;display:grid;align-items:center;padding:70px 0 60px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:999px}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#7CF2A8;box-shadow:0 0 0 4px rgba(124,242,168,.25)}
+.hero h1{font-size:clamp(40px,6vw,76px);font-weight:900;line-height:.98;color:var(--navy);text-transform:uppercase;margin:22px 0 6px;letter-spacing:-.01em}
+.hero h1 span{display:block;color:var(--blue);font-size:.52em;font-weight:800;letter-spacing:.02em;margin-top:8px;line-height:1.1}
+.hero-kicker{font-weight:700;color:var(--slate);font-size:18px;margin-top:10px}
+.hero-subtitle{color:var(--slate);font-size:17px;max-width:600px;margin-top:16px}
+.hero-details{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-tag{display:inline-flex;align-items:center;gap:9px;background:var(--navy);color:#fff;padding:10px 16px;border-radius:12px;font-family:'Fraunces',sans-serif;font-size:22px;letter-spacing:.06em;line-height:1}
+.hero-tag.light{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.hero-tag svg{width:20px;height:20px}
+.hero-flags{margin-top:22px;font-size:30px;letter-spacing:6px;line-height:1}
+.hero-flags .fr{white-space:nowrap}
+.hero-photo{position:relative;aspect-ratio:1/1.05;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:var(--ice);
+  display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 55%,rgba(20,40,107,.45))}
+.hero-photo .tri{z-index:3}
+.hero-scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:4px}
+.hero-scroll svg{width:18px;height:18px;animation:bob 1.6s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero{padding:44px 0 70px;min-height:auto}.hero-photo{max-width:420px;margin:0 auto}}
+
+
+/* blue hero rebuilt from the infopack */
+.hero-blue{background:var(--navy);color:#fbf5ea;padding:46px 0 0;position:relative;overflow:visible}
+.curtain{display:flex;height:18px;padding:0 2px;background:var(--navy)}.curtain i{flex:1;height:18px;background:#ff6a4d;border-radius:0 0 50% 50%;margin-right:2px}
+.hero-blue::before{content:"";position:absolute;left:0;top:0;width:10px;height:100%;background:rgba(255,255,255,.5)}
+.hb-dot{position:absolute;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.16);pointer-events:none;z-index:1}
+.hb-dot.sm{width:30px;height:30px;background:rgba(255,255,255,.22)}
+.hero-blue-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:end;position:relative;z-index:3}
+.hb-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(46px,7vw,92px);line-height:.92;letter-spacing:.01em;margin:4px 0 14px;}
+.hb-sub{font-weight:800;font-style:italic;font-size:clamp(18px,2.4vw,27px);line-height:1.15;max-width:560px}
+.hb-hash{font-style:italic;font-weight:600;font-size:clamp(15px,1.8vw,20px);opacity:.92;margin-top:8px}
+.hb-meta{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:24px}
+.hb-m{display:inline-flex;align-items:center;gap:9px;font-size:clamp(17px,2vw,22px);font-weight:600}
+.hb-m svg{width:22px;height:22px;stroke:#fff}
+.hb-ka{display:inline-flex;align-items:center;gap:9px;font-size:clamp(14px,1.6vw,18px);font-weight:500;opacity:.95;margin-top:16px}
+.hb-ka svg{width:22px;height:22px;stroke:#fff}
+.hb-right{display:flex;justify-content:center;align-items:flex-end}
+.photo-frame.hero-circle{width:min(100%,480px);aspect-ratio:1;border-radius:50%;background:#fff;border:2px dashed #ffc83d;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#6B86C6;font-weight:600;font-size:15px;text-align:center;padding:20px 20px 72px;position:relative;margin-bottom:-78px}
+.photo-frame.hero-circle .ico{width:40px;height:40px;stroke:#ff6a4d}
+.photo-frame.hero-circle img{width:100%;height:100%;object-fit:cover;object-position:bottom center}
+body.editing .photo-frame.hero-circle{cursor:pointer}
+.hb-flags{position:relative;z-index:6;margin-top:28px;background:var(--navy2);padding:16px 0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.flagb{width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:40px;line-height:1;overflow:hidden;box-shadow:0 3px 8px rgba(0,0,0,.18)}
+.cover-strip{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+@media(max-width:860px){
+  .hero-blue-grid{grid-template-columns:1fr;gap:18px;text-align:center}
+  .hb-sub{margin:0 auto}.hb-meta{justify-content:center}
+  .hb-right{order:-1}.photo-frame.hero-circle{width:min(70%,300px);margin-bottom:0;padding-bottom:0}
+  .flagb{width:44px;height:44px;font-size:33px}
+}
+/* about *//* about */
+.about{padding:90px 0;background:#fff}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.about-text p{color:var(--slate);margin-top:14px;font-size:16px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.stat-card{background:var(--navy);color:#fff;border-radius:16px;padding:18px 14px;text-align:center}
+.stat-card .number{font-family:'Fraunces',sans-serif;font-size:46px;line-height:1;letter-spacing:.04em}
+.stat-card .label{font-size:12.5px;font-weight:600;opacity:.85;margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.about-photos{display:grid;grid-template-columns:1fr;gap:16px}
+.about-photos .photo-frame{aspect-ratio:16/9;grid-row:auto}
+.photo-frame{background:var(--ice);border:1.5px dashed #B8C6E6;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-weight:600;font-size:13px;text-align:center;overflow:hidden;position:relative}
+.photo-frame .ico{width:26px;height:26px;stroke:var(--blue2)}
+.photo-frame.tall{grid-row:span 2}
+.photo-frame img{width:100%;height:100%;object-fit:cover}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+
+/* testimonials */
+.testimonials{padding:90px 0}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.testi-grid{grid-template-columns:1fr}}
+.testi-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column;align-items:center}
+.testi-card .photo-frame.testi-photo{width:88px;height:88px;aspect-ratio:1;border-radius:50%;margin:0 0 14px;flex:0 0 auto;gap:4px;font-size:11px}
+.testi-card .photo-frame.testi-photo .ico{width:20px;height:20px}
+.testi-card .photo-frame.testi-photo img{width:100%;height:100%;object-fit:cover}
+.testi-quote{color:var(--slate);font-size:14.5px;font-style:italic;line-height:1.6}
+.testi-quote::before{content:'\201C';color:var(--blue);font-weight:800;margin-right:1px}
+.testi-quote::after{content:'\201D';color:var(--blue);font-weight:800;margin-left:1px}
+.testi-name{margin-top:12px;font-weight:700;color:var(--navy);font-size:13.5px}
+body.editing .testi-card .photo-frame.testi-photo{cursor:pointer}
+
+/* generic cards */
+.grid{display:grid;gap:20px;margin-top:44px}
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g4,.g3,.g2{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-5px);box-shadow:0 24px 48px rgba(20,40,107,.14)}
+.card h3,.card h4{color:var(--navy);font-weight:800;font-size:17px;margin:14px 0 8px;line-height:1.3}
+.card p{color:var(--slate);font-size:14.5px}
+.ic-circle{width:64px;height:64px;border-radius:50%;background:var(--navy);display:grid;place-items:center;color:#fff}
+.ic-circle svg{width:30px;height:30px}
+.card.navy{background:var(--navy);border-color:var(--navy);color:#fff}
+.card.navy h3,.card.navy p{color:#fff}.card.navy p{opacity:.9}
+.card.navy .ic-circle{background:#fff;color:var(--navy)}
+.card .corner{position:absolute;right:-1px;top:-1px;border-style:solid;border-width:0 46px 46px 0;border-color:transparent var(--blue) transparent transparent}
+
+.objectives{padding:90px 0}
+.topics{padding:90px 0;background:#fff}
+.results{padding:90px 0}
+.results .card{text-align:center}
+.results .ic-circle{margin:0 auto}
+.profile{padding:90px 0;background:#fff}
+.profile .card{text-align:center}.profile .ic-circle{margin:0 auto}
+
+/* programme */
+.activities{padding:90px 0}
+.activities-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:44px}
+@media(max-width:1100px){.activities-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.activities-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.activities-grid{grid-template-columns:1fr}}
+.activity-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 18px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .25s}
+.activity-card:hover{transform:translateY(-5px)}
+.activity-number{position:absolute;right:14px;top:8px;font-family:'Fraunces',sans-serif;font-size:44px;color:var(--sky);line-height:1}
+.activity-icon{width:46px;height:46px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center}
+.activity-icon svg{width:24px;height:24px}
+.day-badge{display:inline-block;margin-top:14px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);background:var(--ice);padding:4px 10px;border-radius:999px}
+.activity-card h3{font-size:15.5px;color:var(--navy);margin:10px 0 6px;font-weight:800;line-height:1.3}
+.activity-card p{font-size:13.5px;color:var(--slate)}
+.breaks{margin-top:26px;text-align:center;color:var(--muted);font-size:13.5px}
+
+/* big type */
+.big-type{background:var(--navy);color:#fff;padding:80px 24px;text-align:center;overflow:hidden;position:relative}
+.big-type h2{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(44px,8vw,110px);line-height:.95;letter-spacing:-.01em}
+.big-type h2 .alt{color:var(--blue2);font-style:italic;font-weight:500;display:inline-block;margin-left:.2em}
+.big-type h2 .small{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(14px,2vw,20px);font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.85;margin-top:18px}
+.big-type .tri{opacity:.35}
+
+/* teams */
+.teams{padding:90px 0;background:#fff}
+.teams-wrapper{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+@media(max-width:1000px){.teams-wrapper{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.teams-wrapper{grid-template-columns:1fr}}
+.team-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border-top:6px solid var(--tc,var(--navy))}
+.team-header{padding:18px 20px 12px}
+.team-header h3{font-size:19px;font-weight:800;color:var(--navy)}
+.team-header .count{color:var(--muted);font-size:13px;font-weight:600}
+.team-photos{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:6px 16px 20px}
+.team-photo-slot{flex:0 0 calc(50% - 5px);max-width:150px;aspect-ratio:1;border-radius:14px;background:var(--ice);border:1.5px dashed #B8C6E6;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:12px;font-weight:600;overflow:hidden;position:relative}
+.team-photo-slot .plus{font-size:22px;color:var(--blue2);line-height:1}
+.team-photo-slot img{width:100%;height:100%;object-fit:cover}
+
+/* partners */
+.partners{padding:90px 0}
+.partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+@media(max-width:900px){.partners-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.partners-grid{grid-template-columns:1fr}}
+.partner-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 18px;box-shadow:var(--shadow);border-left:5px solid var(--navy);transition:transform .25s}
+.partner-card:hover{transform:translateY(-4px)}
+.partner-card .p-flag{font-size:28px;line-height:1}
+.partner-card h4{font-size:14.5px;color:var(--navy);margin:8px 0 3px;font-weight:700;line-height:1.35}
+.partner-card .p-role{color:var(--muted);font-size:12.5px;font-weight:600}
+
+/* gallery */
+.gallery{padding:90px 0;background:#fff}
+#photo-wall{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
+@media(max-width:1000px){#photo-wall{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){#photo-wall{grid-template-columns:repeat(2,1fr)}}
+.wall-item{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:var(--ice);cursor:zoom-in}
+.wall-item img{width:100%;height:100%;object-fit:cover;display:block}
+.remove-btn,.slot-remove{position:absolute;top:6px;right:6px;width:26px;height:26px;border:none;border-radius:50%;background:rgba(220,38,38,.95);color:#fff;font-size:12px;cursor:pointer;display:none;z-index:4;align-items:center;justify-content:center}
+body.editing .remove-btn,body.editing .slot-remove{display:flex}
+#wall-empty{display:none;text-align:center;color:var(--muted);padding:40px;border:1.5px dashed #B8C6E6;border-radius:16px;margin-top:40px}
+.gallery-actions{text-align:center;margin-top:30px}
+#add-photo-btn{display:none;font-weight:700;background:linear-gradient(90deg,var(--navy),var(--blue));color:#fff;border:none;padding:14px 28px;border-radius:12px;font-size:15px;cursor:pointer;box-shadow:0 12px 26px rgba(30,86,217,.28);font-family:inherit}
+.wall-hint{color:var(--muted);font-size:13px;margin-top:12px}
+.lightbox{position:fixed;inset:0;background:rgba(5,10,30,.92);display:none;align-items:center;justify-content:center;z-index:2000}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:86vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lightbox button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:none;font-size:30px;width:52px;height:52px;border-radius:50%;cursor:pointer}
+.lightbox .lb-close{top:18px;right:18px}.lightbox .lb-prev{left:16px;top:50%;transform:translateY(-50%)}.lightbox .lb-next{right:16px;top:50%;transform:translateY(-50%)}
+.lightbox .lb-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;font-weight:600;font-size:13px;letter-spacing:.1em}
+
+/* connect */
+.connect{background:var(--navy2);color:#fff;padding:90px 24px;text-align:center;position:relative;overflow:hidden}
+.connect::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(120% 100% at 50% 0%,#000 20%,transparent 75%)}
+.connect>*{position:relative}
+.connect h2{font-size:clamp(34px,5vw,56px);font-weight:900;text-transform:uppercase;line-height:1}
+.connect h2 span{color:#7FB0FF}
+.connect p{color:#C9D6F5;max-width:620px;margin:16px auto 0}
+.connect-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.cbtn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--navy);text-decoration:none;font-weight:700;padding:13px 22px;border-radius:12px;transition:transform .2s}
+.cbtn:hover{transform:translateY(-3px)}
+.cbtn svg{width:20px;height:20px}
+.connect .vmdo-poster{width:220px;margin:36px auto 0}
+.footer-line{background:#07133A;color:#9FB0D8;text-align:center;padding:22px 24px;font-size:12.5px}
+.footer-line strong{color:#fff}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+
+/* clickable cards + detail modal */
+.clickable{cursor:pointer}
+.detail-btn{display:none;position:absolute;left:12px;bottom:10px;background:var(--blue);color:#fff;border:none;border-radius:8px;padding:5px 10px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;z-index:3}
+body.editing .detail-btn{display:inline-block}
+body.editing .clickable{cursor:default}
+.card.clickable,.activity-card.clickable{padding-bottom:40px}
+.card-more{display:inline-block;margin-top:12px;color:var(--blue);font-weight:700;font-size:13px}
+#detail-store{display:none}
+.modal{position:fixed;inset:0;background:rgba(5,10,30,.78);display:none;align-items:center;justify-content:center;z-index:1900;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:#fff;border-radius:22px;max-width:860px;width:100%;max-height:90vh;overflow:auto;position:relative;box-shadow:0 40px 90px rgba(0,0,0,.45)}
+.modal-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:none;background:var(--navy);color:#fff;font-size:22px;cursor:pointer;z-index:2}
+.detail-pane{display:grid;grid-template-columns:1fr 1.2fr;gap:0}
+.detail-pane .photo-frame{border-radius:22px 0 0 22px;min-height:320px;height:100%}
+.detail-pane .detail-body{padding:36px 34px}
+.detail-pane .detail-label{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+.detail-pane h3{color:var(--navy);font-size:26px;font-weight:800;line-height:1.15;margin:6px 0 14px}
+.detail-pane p{color:var(--slate);font-size:15.5px}
+@media(max-width:760px){.detail-pane{grid-template-columns:1fr}.detail-pane .photo-frame{border-radius:22px 22px 0 0;min-height:220px}}
+
+/* handbook */
+.handbook{padding:90px 0}
+.handbook-card{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);margin-top:40px}
+.handbook-card .photo-frame{border-radius:0;min-height:360px;height:100%}
+.handbook-body{padding:40px 38px}
+.handbook-body h3{color:var(--navy);font-size:26px;font-weight:800;line-height:1.15}
+.handbook-body p{color:var(--slate);margin-top:12px}
+.dl-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.dl-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--navy),var(--blue));color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:12px;box-shadow:0 12px 26px rgba(30,86,217,.28);transition:transform .2s;border:none;cursor:pointer;font-family:inherit;font-size:15px}
+.dl-btn:hover{transform:translateY(-3px)}
+.dl-btn.soon{background:var(--ice);color:var(--muted);box-shadow:none;cursor:default}
+.dl-btn svg{width:20px;height:20px}
+.dl-meta{color:var(--muted);font-size:12.5px;font-weight:600;overflow-wrap:anywhere;word-break:break-word}
+.up-btn{display:none;background:#fff;color:var(--navy);border:2px solid var(--navy);border-radius:12px;padding:10px 16px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px}
+body.editing .up-btn{display:inline-flex;align-items:center;gap:8px}
+@media(max-width:800px){.handbook-card{grid-template-columns:1fr}.handbook-card .photo-frame{min-height:220px}}
+
+/* toolkit */
+.toolkit{padding:90px 0;background:#fff}
+#resources{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:44px}
+@media(max-width:1000px){#resources{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#resources{grid-template-columns:1fr}}
+.res-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px 24px;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column}
+.res-card .ic-circle{width:56px;height:56px}.res-card .ic-circle svg{width:26px;height:26px}
+.res-card h3{color:var(--navy);font-weight:800;font-size:16.5px;margin:14px 0 8px;line-height:1.3}
+.res-card p{color:var(--slate);font-size:14px;flex:1}
+.res-card .dl-btn{margin-top:18px;padding:11px 16px;font-size:14px;justify-content:center}
+.res-card .up-btn{margin-top:10px;justify-content:center}
+.res-card .dl-meta{margin-top:8px}
+.res-card .remove-btn{top:10px;right:10px}
+#add-res-btn,#add-link-btn,#add-opp-btn{display:none}
+body.editing #add-res-btn,body.editing #add-link-btn,body.editing #add-opp-btn{display:inline-block}
+.section-actions{text-align:center;margin-top:28px}
+
+/* campaign */
+.campaign{padding:90px 0}
+#opp-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+@media(max-width:1000px){#opp-wall{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){#opp-wall{grid-template-columns:repeat(2,1fr)}}
+.sub-title{color:var(--navy);font-size:22px;font-weight:800;margin-top:56px;text-align:center}
+.sub-lead{text-align:center;color:var(--muted);font-size:14.5px;margin-top:6px}
+#opp-links{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+@media(max-width:900px){#opp-links{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){#opp-links{grid-template-columns:1fr}}
+.link-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);text-decoration:none;color:var(--navy);position:relative;transition:transform .2s}
+.link-card:hover{transform:translateY(-4px)}
+.link-card .lk-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:0 0 46px;background:var(--navy)}
+.link-card .lk-ic svg{width:24px;height:24px}
+.link-card .lk-ic.ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}.link-card .lk-ic.tt{background:#111}.link-card .lk-ic.fb{background:#1877F2}.link-card .lk-ic.yt{background:#FF0000}
+.link-card h4{font-size:14.5px;font-weight:700;line-height:1.3}
+.link-card .lk-url{color:var(--muted);font-size:12px;font-weight:600;word-break:break-all}
+.link-card .edit-link{display:none;position:absolute;right:40px;top:10px;width:26px;height:26px;border-radius:50%;border:none;background:var(--blue);color:#fff;cursor:pointer;font-size:12px}
+body.editing .link-card .edit-link{display:block}
+#links-empty,#opp-empty,#res-empty{display:none;text-align:center;color:var(--muted);padding:30px;border:1.5px dashed #B8C6E6;border-radius:16px;margin-top:28px}
+
+/* ---- mobile polish ---- */
+@media(max-width:700px){
+  .container{padding:0 18px}
+  section{padding-left:0;padding-right:0}
+  .about,.objectives,.topics,.activities,.results,.profile,.teams,.partners,.gallery,.handbook,.toolkit,.campaign{padding:60px 0}
+  .section-title{font-size:clamp(26px,8vw,34px)}
+  .lead{font-size:15px;margin-top:10px}
+  .eu-logobar{gap:14px;padding:10px 12px;flex-wrap:nowrap}
+  .eu-logo,.eu-logo svg,.eu-logo img{height:30px}.eu-logo.vmdo img{height:34px}
+  .hero{padding:30px 0 60px}
+  .hero>.tri{display:none}
+  .hero-badge{font-size:10.5px;letter-spacing:.08em;padding:7px 12px}
+  .hero h1{font-size:clamp(38px,12vw,54px);margin-top:16px}
+  .hero h1 span{font-size:.5em}
+  .hero-subtitle{font-size:15.5px;margin-top:12px}
+  .hero-details{gap:8px;margin-top:18px}
+  .hero-tag{font-size:17px;padding:8px 12px;border-radius:10px;flex:1 1 calc(50% - 4px);justify-content:center;white-space:nowrap}
+  .hero-details .hero-tag:first-child{flex-basis:100%}
+  .hero-flags{font-size:26px;letter-spacing:4px;margin-top:16px;text-align:center}
+  .hero-flags .fr{display:block;line-height:1.5}
+  .hero-photo{margin-top:26px;aspect-ratio:4/3;border-radius:20px}
+  .hero-scroll{display:none}
+  .about-grid{gap:30px}
+  .about-stats{gap:10px}.stat-card{padding:14px 8px;border-radius:14px}.stat-card .number{font-size:36px}.stat-card .label{font-size:10px;letter-spacing:.06em}
+  .about-photos{grid-auto-rows:200px;gap:10px}
+  .grid{gap:14px;margin-top:28px}
+  .card{padding:22px 18px}.card h3{font-size:16px}.card p{font-size:14px}
+  .ic-circle{width:54px;height:54px}.ic-circle svg{width:26px;height:26px}
+  .activities-grid{gap:14px;margin-top:28px}
+  .activity-card{padding:20px 16px 18px}
+  .big-type{padding:56px 18px}.big-type h2 .small{letter-spacing:.12em;font-size:12px}
+  .teams-wrapper{gap:14px;margin-top:28px}
+  .team-photo-slot{max-width:none}
+  .partners-grid{gap:12px;margin-top:28px}
+  #photo-wall,#opp-wall{gap:10px;margin-top:28px}
+  .handbook-card{margin-top:28px;border-radius:18px}.handbook-body{padding:26px 20px}.handbook-body h3{font-size:21px}
+  .dl-row{flex-direction:column;align-items:stretch}.dl-btn{justify-content:center}
+  #resources{gap:14px;margin-top:28px}
+  .sub-title{font-size:19px;margin-top:40px}
+  .connect{padding:60px 18px}.connect h2{font-size:clamp(30px,9vw,40px)}
+  .connect-buttons{flex-direction:column;align-items:stretch}.cbtn{justify-content:center}
+  .connect .vmdo-poster{width:120px}
+  .footer-line{font-size:11.5px;padding:18px}
+  .modal{padding:10px;align-items:flex-end}
+  .modal-box{border-radius:20px 20px 0 0;max-height:92vh}
+  .detail-pane .photo-frame{min-height:180px;border-radius:20px 20px 0 0}
+  .detail-pane .detail-body{padding:24px 20px 30px}.detail-pane h3{font-size:22px}.detail-pane p{font-size:15px}
+  .modal-close{width:34px;height:34px;top:10px;right:10px}
+  .lightbox button{width:42px;height:42px;font-size:24px}
+  .edit-toolbar{right:12px;bottom:70px;padding:7px 8px;gap:6px;border-radius:12px;justify-content:flex-end}
+  body.editing .edit-toolbar{left:12px}
+  .edit-toolbar button{padding:9px 12px;font-size:13px}
+  #edit-status{font-size:11px;line-height:1.25;flex:1;max-width:none}
+  #edit-status:empty{display:none}
+  body.editing .back-top{display:none}
+  .back-top{left:12px;bottom:70px;width:40px;height:40px}
+  .detail-btn{left:10px;bottom:8px}
+}
+@media(max-width:380px){.hero-tag{flex-basis:100%}.hero h1{font-size:36px}}
+
+/* edit toolbar */
+.edit-toolbar{position:fixed;bottom:76px;right:18px;z-index:2147483000;display:flex;align-items:center;gap:8px;background:var(--navy2);padding:8px 10px;border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.edit-toolbar button{font-family:inherit;font-weight:700;border:none;border-radius:10px;padding:10px 16px;cursor:pointer;background:var(--blue);color:#fff;font-size:14px}
+#toggle-edit.active{background:#DC2626}
+#undo-btn,#redo-btn{display:none;font-size:16px;padding:9px 13px;background:#2E4A9C}
+#undo-btn:disabled,#redo-btn:disabled{opacity:.35;cursor:default}
+#edit-status{color:#9FB4E8;font-size:12.5px;font-weight:600;max-width:220px}
+body.editing [contenteditable="true"]{outline:2px dashed var(--blue2);outline-offset:3px;border-radius:4px;cursor:text;min-width:1ch}
+body.editing [contenteditable="true"]:focus{outline-color:#DC2626;background:rgba(255,255,255,.6)}
+body.editing .photo-frame,body.editing .team-photo-slot,body.editing .hero-photo{cursor:pointer;box-shadow:0 0 0 3px var(--blue2)}
+body.editing .res-card h3,body.editing .res-card p{outline:2px dashed var(--blue2);outline-offset:3px;border-radius:4px;cursor:text}
+.back-top{position:fixed;left:18px;bottom:76px;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--navy);border:1px solid var(--line);box-shadow:var(--shadow);display:none;place-items:center;cursor:pointer;z-index:1400}
+.back-top.show{display:grid}.back-top svg{width:20px;height:20px}
+</style>
+</head>
+<body>
+<div class="scroll-prog" id="scrollProg"></div>
+<nav class="nav"><div class="nav-inner">
+  <a class="nav-logo" href="#top"><span class="mark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> CREATIVE FUTURES</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a><a href="#objectives">Objectives</a><a href="#topics">Methods</a><a href="#digital">Digital</a><a href="#programme">Programme</a>
+    <a href="#results">Results</a><a href="#toolkit">Toolkit</a><a href="#campaign">Campaign</a><a href="#testimonials">Testimonials</a><a href="#teams">People</a><a href="#partners">Partners</a><a href="#gallery">Gallery</a><a href="#connect">Contact</a>
+  </div>
+</div></nav>
+
+<div class="eu-logobar top"><span class="eu-logo"><svg viewBox='0 0 212 60' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Co-funded by the European Union'><rect x='0' y='11.0' width='57' height='38' fill='#003399'/><polygon points='28.50,15.22 28.97,16.68 30.51,16.68 29.27,17.58 29.74,19.04 28.50,18.14 27.26,19.04 27.73,17.58 26.49,16.68 28.03,16.68' fill='#FFCC00'/><polygon points='34.83,16.92 35.31,18.38 36.84,18.38 35.60,19.28 36.07,20.74 34.83,19.84 33.59,20.74 34.07,19.28 32.83,18.38 34.36,18.38' fill='#FFCC00'/><polygon points='39.47,21.56 39.94,23.01 41.48,23.01 40.24,23.92 40.71,25.37 39.47,24.47 38.23,25.37 38.70,23.92 37.46,23.01 39.00,23.01' fill='#FFCC00'/><polygon points='41.17,27.89 41.64,29.35 43.17,29.35 41.93,30.25 42.41,31.71 41.17,30.81 39.93,31.71 40.40,30.25 39.16,29.35 40.69,29.35' fill='#FFCC00'/><polygon points='39.47,34.22 39.94,35.68 41.48,35.68 40.24,36.58 40.71,38.04 39.47,37.14 38.23,38.04 38.70,36.58 37.46,35.68 39.00,35.68' fill='#FFCC00'/><polygon points='34.83,38.86 35.31,40.32 36.84,40.32 35.60,41.22 36.07,42.68 34.83,41.78 33.59,42.68 34.07,41.22 32.83,40.32 34.36,40.32' fill='#FFCC00'/><polygon points='28.50,40.56 28.97,42.01 30.51,42.01 29.27,42.92 29.74,44.37 28.50,43.47 27.26,44.37 27.73,42.92 26.49,42.01 28.03,42.01' fill='#FFCC00'/><polygon points='22.17,38.86 22.64,40.32 24.17,40.32 22.93,41.22 23.41,42.68 22.17,41.78 20.93,42.68 21.40,41.22 20.16,40.32 21.69,40.32' fill='#FFCC00'/><polygon points='17.53,34.22 18.00,35.68 19.54,35.68 18.30,36.58 18.77,38.04 17.53,37.14 16.29,38.04 16.76,36.58 15.52,35.68 17.06,35.68' fill='#FFCC00'/><polygon points='15.83,27.89 16.31,29.35 17.84,29.35 16.60,30.25 17.07,31.71 15.83,30.81 14.59,31.71 15.07,30.25 13.83,29.35 15.36,29.35' fill='#FFCC00'/><polygon points='17.53,21.56 18.00,23.01 19.54,23.01 18.30,23.92 18.77,25.37 17.53,24.47 16.29,25.37 16.76,23.92 15.52,23.01 17.06,23.01' fill='#FFCC00'/><polygon points='22.17,16.92 22.64,18.38 24.17,18.38 22.93,19.28 23.41,20.74 22.17,19.84 20.93,20.74 21.40,19.28 20.16,18.38 21.69,18.38' fill='#FFCC00'/><text x='71' y='28.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>Co-funded by the</text><text x='71' y='46.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>European Union</text></svg></span><span class="eu-logo"><svg version="1.1" viewBox="0 0 312.13 89.326" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">   <defs>     <g id="et_a">       <g id="et_b">         <path id="et_g" transform="rotate(18 3.1569 -.5)" d="m0 0v1h0.5z"/>         <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_g"/>       </g>       <g id="et_c">         <use transform="rotate(72)" width="100%" height="100%" xlink:href="#et_b"/>         <use transform="rotate(144)" width="100%" height="100%" xlink:href="#et_b"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_c"/>     </g>   </defs>   <path d="m131.16 72.78h-18.53v-28.125h18.53v3.3245h-14.79v7.707h14.79v3.3242h-14.79v10.446h14.79v3.324" fill="#2765b2" stroke-width=".26458"/>   <path d="m148.52 55.56h-0.18885c-0.52885-0.12601-1.0418-0.21696-1.5392-0.27384-0.49773-0.0569-1.0864-0.0853-1.7661-0.0853-1.0957 0-2.1534 0.24276-3.1734 0.72729-1.0203 0.48522-2.0026 1.1115-2.9469 1.8798v14.978h-3.551v-21.099h3.551v3.1168c1.4102-1.1331 2.6538-1.9361 3.7306-2.4084 1.0765-0.47196 2.1749-0.70842 3.2962-0.70842 0.6168 0 1.0639 0.0162 1.3411 0.0476 0.27681 0.0311 0.6922 0.0913 1.2465 0.17893v3.646" fill="#2765b2" stroke-width=".26458"/>   <path d="m164.08 67.59v-5.8743c-1.0825 0.0624-2.3578 0.15775-3.8246 0.28268-1.4671 0.1261-2.6293 0.3089-3.4851 0.54806-1.02 0.29001-1.8448 0.74025-2.4745 1.3507-0.62971 0.61095-0.94424 1.4513-0.94424 2.5218 0 1.2086 0.36512 2.1188 1.0957 2.7294 0.73025 0.61081 1.8445 0.91569 3.343 0.91569 1.2468 0 2.3862-0.24209 3.4189-0.72654 1.0322-0.48525 1.9897-1.0673 2.8707-1.7473zm3.5327 5.194h-3.5327v-2.2473c-0.31454 0.21368-0.73951 0.51302-1.2746 0.89662-0.53546 0.38433-1.0547 0.68987-1.5584 0.91646-0.59166 0.2894-1.272 0.53179-2.0399 0.72697-0.7683 0.19546-1.6685 0.293-2.7009 0.293-1.902 0-3.5137-0.62968-4.8361-1.8888-1.3223-1.2595-1.9834-2.8649-1.9834-4.8167 0-1.5994 0.34295-2.8932 1.0295-3.8814 0.68593-0.98859 1.6649-1.7662 2.9371-2.3327 1.2846-0.56716 2.8263-0.95085 4.6276-1.1526 1.8008-0.20142 3.7335-0.35243 5.7986-0.45334v-0.54774c0-0.80526-0.14155-1.4733-0.42434-2.0025-0.28377-0.52824-0.6899-0.9443-1.2191-1.2466-0.50303-0.2894-1.1076-0.4845-1.8131-0.58539-0.70543-0.10054-1.442-0.15114-2.2099-0.15114-0.93199 0-1.9708 0.1227-3.1165 0.36843-1.1463 0.2454-2.33 0.60127-3.551 1.0669h-0.18918v-3.6076c0.69255-0.18852 1.6933-0.39656 3.0033-0.62341 1.3094-0.22655 2.6002-0.33967 3.8722-0.33967 1.4856 0 2.7794 0.1227 3.8814 0.36809 1.102 0.24538 2.0561 0.66476 2.8615 1.2564 0.79407 0.57944 1.398 1.3289 1.814 2.2473 0.4154 0.91974 0.62341 2.059 0.62341 3.4189v14.318" fill="#2765b2" stroke-width=".26458"/>   <path d="m188.18 66.7c0 1.9269-0.7964 3.5078-2.3892 4.7413-1.5938 1.2343-3.7687 1.8514-6.5262 1.8514-1.5617 0-2.9938-0.18617-4.2974-0.55759-1.3028-0.37144-2.3958-0.77684-3.2769-1.218v-3.9857h0.18852c1.1208 0.84376 2.3674 1.5141 3.7402 2.0115 1.3725 0.49805 2.6884 0.74609 3.9478 0.74609 1.5614 0 2.7829-0.25128 3.6639-0.75538 0.88172-0.50374 1.3226-1.2967 1.3226-2.3802 0-0.83042-0.23912-1.4605-0.71768-1.8888-0.4789-0.42762-1.398-0.79312-2.7575-1.0954-0.50403-0.11305-1.1615-0.24534-1.9741-0.39651-0.81195-0.15114-1.5521-0.31483-2.2195-0.49117-1.8508-0.49147-3.1639-1.2118-3.9383-2.1627-0.77444-0.95086-1.1615-2.1186-1.1615-3.5044 0-0.86878 0.17959-1.687 0.53811-2.4549 0.35917-0.7683 0.90355-1.4549 1.6341-2.0588 0.7048-0.59235 1.6021-1.0613 2.6919-1.4076 1.0891-0.34629 2.3075-0.51925 3.655-0.51925 1.2591 0 2.534 0.15445 3.8246 0.46236 1.2908 0.3089 2.3644 0.68363 3.221 1.1242v3.7968h-0.18885c-0.90686-0.66707-2.0088-1.231-3.306-1.6904-1.2971-0.46006-2.5681-0.68991-3.815-0.68991-1.2971 0-2.3925 0.24871-3.2864 0.74613-0.89495 0.49808-1.3418 1.2376-1.3418 2.2195 0 0.86879 0.27054 1.5237 0.81259 1.9642 0.52917 0.44119 1.3848 0.80036 2.5691 1.077 0.65418 0.15101 1.3881 0.30218 2.2 0.45333 0.81259 0.15115 1.4889 0.29001 2.031 0.41545 1.649 0.37804 2.921 1.0262 3.8156 1.9456 0.89397 0.93197 1.3408 2.166 1.3408 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m222.74 72.78h-3.5512v-12.013c0-0.90678-0.0407-1.782-0.1227-2.6257-0.082-0.84363-0.25499-1.5174-0.51924-2.021-0.29004-0.54136-0.70543-0.95014-1.2468-1.228-0.54107-0.27649-1.3223-0.41539-2.3422-0.41539-0.99483 0-1.9893 0.24871-2.9842 0.74612-0.99483 0.49808-1.9897 1.1304-2.9845 1.8983 0.0377 0.2902 0.0691 0.62686 0.0946 1.0104 0.0251 0.38434 0.038 0.76534 0.038 1.1434v13.505h-3.5518v-12.013c0-0.93199-0.0407-1.8163-0.1227-2.654-0.082-0.83704-0.25499-1.5074-0.51924-2.0115-0.29004-0.54139-0.70543-0.94753-1.2465-1.2184-0.54139-0.27053-1.3226-0.40613-2.3422-0.40613-0.9697 0-1.9427 0.23978-2.9186 0.71768-0.976 0.47858-1.9487 1.0898-2.9184 1.8326v15.753h-3.5507v-21.099h3.5507v2.3422c1.1086-0.91842 2.2129-1.6368 3.3152-2.153 1.102-0.51594 2.2761-0.77457 3.5229-0.77457 1.4354 0 2.6535 0.30228 3.655 0.90686 1.0011 0.60425 1.7473 1.442 2.2381 2.5122 1.436-1.2092 2.7453-2.0806 3.9288-2.6161 1.184-0.53547 2.4494-0.80301 3.797-0.80301 2.3167 0 4.0259 0.70215 5.1279 2.1058 1.102 1.4046 1.653 3.3655 1.653 5.8843v13.694" fill="#2765b2" stroke-width=".26458"/>   <path d="m245.11 72.78h-3.5507v-2.3422c-1.1969 0.94427-2.3422 1.6693-3.4375 2.1722-1.0957 0.50409-2.3048 0.75576-3.6272 0.75576-2.2162 0-3.9418-0.67694-5.1755-2.0306-1.2343-1.3534-1.8504-3.3398-1.8504-5.9592v-13.695h3.5507v12.013c0 1.0704 0.0503 1.9865 0.15114 2.7488 0.10087 0.76131 0.31454 1.4131 0.64193 1.9545 0.33999 0.55438 0.78118 0.95721 1.3223 1.2091 0.54139 0.25205 1.3282 0.37734 2.3611 0.37734 0.91911 0 1.9235-0.23898 3.0125-0.71765 1.0891-0.47813 2.1067-1.0891 3.0509-1.832v-15.754h3.5507v21.099" fill="#2765b2" stroke-width=".26458"/>   <path d="m265.85 66.7c0 1.9269-0.7964 3.5078-2.3895 4.7413-1.5928 1.2343-3.7682 1.8514-6.5259 1.8514-1.5614 0-2.994-0.18617-4.2971-0.55759-1.3034-0.37144-2.3958-0.77684-3.2777-1.218v-3.9857h0.18951c1.1205 0.84376 2.3674 1.5141 3.7399 2.0115 1.3722 0.49805 2.6879 0.74609 3.9476 0.74609 1.561 0 2.7829-0.25128 3.6645-0.75538 0.88106-0.50374 1.3223-1.2967 1.3223-2.3802 0-0.83042-0.23978-1.4605-0.71768-1.8888-0.47858-0.42762-1.398-0.79312-2.7583-1.0954-0.50371-0.11305-1.1615-0.24534-1.9735-0.39651-0.81259-0.15114-1.5521-0.31483-2.2195-0.49117-1.8511-0.49147-3.1639-1.2118-3.9383-2.1627s-1.1615-2.1186-1.1615-3.5044c0-0.86878 0.17892-1.687 0.53811-2.4549 0.35917-0.7683 0.90323-1.4549 1.6338-2.0588 0.70543-0.59235 1.6027-1.0613 2.6919-1.4076 1.0888-0.34629 2.3072-0.51925 3.6544-0.51925 1.2597 0 2.534 0.15445 3.8256 0.46236 1.2905 0.3089 2.3641 0.68363 3.2205 1.1242v3.7968h-0.18918c-0.9065-0.66707-2.0085-1.231-3.3052-1.6904-1.2971-0.46006-2.5691-0.68991-3.8158-0.68991-1.2968 0-2.3925 0.24871-3.2864 0.74613-0.89397 0.49808-1.3411 1.2376-1.3411 2.2195 0 0.86879 0.27088 1.5237 0.81195 1.9642 0.52917 0.44119 1.3858 0.80036 2.5691 1.077 0.65484 0.15101 1.3881 0.30218 2.2007 0.45333 0.81195 0.15115 1.4889 0.29001 2.0304 0.41545 1.6497 0.37804 2.9215 1.0262 3.8156 1.9456 0.89396 0.93197 1.3411 2.166 1.3411 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m295.59 61.98h-10.295v10.295h-3.1353v-10.295h-10.294v-3.0226h10.294v-10.294h3.1353v10.294h10.295v3.0226" fill="#2765b2" stroke-width=".26458"/>   <g transform="matrix(.10417 0 0 .10417 16.54 16.54)" stroke-width="2.54">     <rect width="810" height="540" fill="#2765b2"/>     <g transform="matrix(30,0,0,30,405,270)" fill="#fc0">       <use y="-6" width="100%" height="100%" xlink:href="#et_a"/>       <use y="6" width="100%" height="100%" xlink:href="#et_a"/>       <g id="et_f">         <use x="-6" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(216 -2.3442 -2.1107)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(144,-2.1107,-2.3442)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72,-4.6626,-2.0759)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72 -5.0759 .5335)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_f"/>     </g>   </g> </svg></span><span class="eu-logo vmdo"><img src="suse-logo.svg" alt="Stichting UnitySphere Europe"></span></div>
+
+<section class="hero-blue" id="top"><div class="curtain"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <span class="hb-dot" style="top:6%;right:27%"></span><span class="hb-dot" style="top:6%;right:20%"></span><span class="hb-dot" style="top:6%;right:13%"></span><span class="hb-dot" style="top:6%;right:6%"></span><span class="hb-dot" style="top:15%;right:27%"></span><span class="hb-dot" style="top:15%;right:20%"></span><span class="hb-dot" style="top:15%;right:13%"></span><span class="hb-dot" style="top:15%;right:6%"></span><span class="hb-dot sm" style="top:46%;right:3%"></span><span class="hb-dot sm" style="top:55%;right:3%"></span><span class="hb-dot sm" style="top:64%;right:3%"></span><span class="hb-dot sm" style="top:73%;right:3%"></span>
+  <div class="container hero-blue-grid">
+    <div class="hb-left">
+      <h1 class="hb-title">Creative<br><em style="color:var(--blue2);font-style:italic;font-weight:500">Futures</em></h1>
+      <p class="hb-sub">Theatre, Tech &amp; European Participation</p>
+      <p class="hb-hash">#CreativeFutures</p>
+      <div class="hb-meta">
+        <span class="hb-m"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Amsterdam, the Netherlands</span>
+        <span class="hb-m"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 22 &ndash; 28 Nov 2026</span>
+      </div>
+      <p class="hb-ka"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1h-2a2 2 0 0 0 0 4h2v1a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-1h2a2 2 0 0 0 0-4H4v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><path d="M9 12h6M12 9v6"/></svg> Mobility of Youth Workers (KA153-YOU)</p>
+    </div>
+    <div class="hb-right">
+      <div class="photo-frame hero-circle" data-ckey="img_hero"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a group photo</div>
+    </div>
+  </div>
+  <div class="hb-flags"><span class="flagb">🇳🇱</span><span class="flagb">🇬🇷</span><span class="flagb">🇮🇹</span><span class="flagb">🇦🇱</span><span class="flagb">🇹🇷</span><span class="flagb">🇪🇸</span></div>
+</section>
+<div class="container cover-strip">
+  <div class="hero-tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> 22 – 28 November 2026</div>
+  <div class="hero-tag light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Amsterdam, the Netherlands</div>
+  <div class="hero-tag"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> 32 Participants</div>
+  <div class="hero-tag light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg> 6 Countries</div>
+  <a class="hero-tag" href="#toolkit" style="text-decoration:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg> Toolkit</a>
+</div>
+
+<section class="about" id="about"><div class="container"><div class="about-grid">
+  <div class="about-text reveal">
+    <span class="section-label">Project Introduction</span>
+    <h2 class="section-title">What is <span class="highlight">Creative Futures</span>?</h2>
+    <p>Creative Futures: Theatre, Tech and European Participation is an Erasmus+ Mobility of Youth Workers that brings together 32 youth workers from the Netherlands, Greece, Italy, Albania, Türkiye and Spain for a week in Amsterdam, from 22 to 28 November 2026.</p>
+    <p>Youth workers today operate in a rapidly changing environment shaped by digital transformation, social fragmentation and declining youth participation. The project responds by equipping them with creative, participatory and forward-looking methodologies that combine theatre, storytelling, digital awareness and reflective practice.</p>
+    <p>Through participatory workshops, creative facilitation, peer learning and reflection, the participants explore how theatre, storytelling and ethical digital engagement can become powerful tools for dialogue, inclusion and empowerment in their daily work with young people.</p>
+    <p>Coordinated and hosted by <strong>Stichting UnitySphere Europe (SUSE)</strong> and funded by the Erasmus+ Programme of the European Union, project 2026-1-NL02-KA153-YOU-000398144.</p>
+    <div class="about-stats">
+      <div class="stat-card"><div class="number">32</div><div class="label">Participants</div></div>
+      <div class="stat-card"><div class="number">6</div><div class="label">Countries</div></div>
+      <div class="stat-card"><div class="number">5</div><div class="label">Activity days</div></div>
+    </div>
+  </div>
+  <div class="about-photos reveal">
+    <div class="photo-frame" data-ckey="img_frame_0"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Upload group photo</div>
+    <div class="photo-frame" data-ckey="img_frame_2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Upload team photo</div>
+  </div>
+</div></div></section>
+
+<section class="objectives geo" id="objectives">
+  <div class="tri b" style="left:0;top:0"></div><div class="tri a" style="right:0;bottom:0"></div>
+  <div class="container"><div class="center reveal"><span class="section-label">The Script</span><h2 class="section-title">Six <span class="highlight">intentions</span></h2>
+  <p class="lead">The objectives of the project, the script behind every session of the week. Click a card for the full story.</p></div>
+  <div class="grid g3"><div class="card reveal" data-detail="obj_0"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div><h3>Strengthen Creative Methods</h3><p>Build competences in participatory, creative and inclusive facilitation methods that youth workers can use from the first week back home.</p><span class="card-more">More info →</span></div>
+<div class="card navy reveal" data-detail="obj_1"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Theatre &amp; Storytelling</h3><p>Introduce artistic expression as a tool for dialogue, empowerment and inclusion: image theatre, forum theatre, body stories and storytelling.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="obj_2"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1h-2a2 2 0 0 0 0 4h2v1a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-1h2a2 2 0 0 0 0-4H4v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><path d="M9 12h6M12 9v6"/></svg></div><h3>Digital Awareness</h3><p>Enhance critical, ethical engagement with digital tools, artificial intelligence and emerging technologies in youth work.</p><span class="card-more">More info →</span></div>
+<div class="card navy reveal" data-detail="obj_3"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.04Z"/></svg></div><h3>Emotional Intelligence</h3><p>Promote reflection, emotional awareness and safe learning environments for young people and for youth workers themselves.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="obj_4"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div><h3>Intercultural Learning</h3><p>Foster European cooperation and the exchange of practice across six very different youth work realities.</p><span class="card-more">More info →</span></div>
+<div class="card navy reveal" data-detail="obj_5"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><h3>Facilitators of Change</h3><p>Reinforce the role of youth workers as facilitators of participation and innovation in their communities.</p><span class="card-more">More info →</span></div></div></div>
+</section>
+
+<section class="topics" id="topics"><div class="container"><div class="center reveal"><span class="section-label">Act I</span><h2 class="section-title">Role-play &amp; <span class="highlight">storytelling</span> methods</h2>
+  <p class="lead">Four methods from the theatre day, from a two-minute energiser to forum theatre and digital storytelling. Click a card to read how to run it.</p></div>
+  <div class="grid g4"><div class="card reveal" data-detail="topic_0"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>What Are You Doing?</h3><p>The energiser that opens the theatre day: mime one action, answer with a different one, and the next person has to act out what you said. Quick, silly and the fastest way to get a group of 32 on its feet.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="topic_1"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div><h3>Colombian Hypnosis</h3><p>Augusto Boal's exercise in pairs: one hand leads, one face follows at twenty centimetres. Then one leader with two followers. It is about trust, control and who leads young people today: friends, adults or screens.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="topic_2"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div><h3>Forum Theatre</h3><p>Five teams, five situations where a young person is excluded. Each play ends badly on purpose. Then it is replayed and another team shouts Stop!, steps in and changes the ending. The Theatre of the Oppressed in practice.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="topic_3"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1h-2a2 2 0 0 0 0 4h2v1a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-1h2a2 2 0 0 0 0-4H4v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><path d="M9 12h6M12 9v6"/></svg></div><h3>Digital Storytelling</h3><p>Absolute Cinema: each crew makes one short film and two viral shorts on one of the five intentions of the project. Three frozen pictures become a storyboard, a phone becomes a stage, and consent is part of the script.</p><span class="card-more">More info →</span></div></div></div></section>
+<section class="topics geo" id="digital"><div class="tri a" style="right:0;top:0"></div><div class="container"><div class="center reveal"><span class="section-label">Act II</span><h2 class="section-title">Digital <span class="highlight">activities</span></h2>
+  <p class="lead">Artificial intelligence, digital tools and online ethics, explored with the same non-formal methods: team research, pair work, a world café.</p></div>
+  <div class="grid g4"><div class="card reveal" data-detail="dig_0"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div><h3>AI SWOT Analysis</h3><p>Four teams, four letters. Strengths, weaknesses, opportunities and threats of artificial intelligence for youth work and young people, each presented with a live demonstration, and three rules for AI in our youth work agreed by the whole group.</p><span class="card-more">More info →</span></div>
+<div class="card navy reveal" data-detail="dig_1"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><h3>Digital Tools for Youth Workers</h3><p>Five teams research and test the best digital and AI tools for theatre and storytelling, video, fact-checking, youth voice and reflection, and fill a live team sheet any colleague can use tomorrow.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="dig_2"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div><h3>CRAFT: Rewrite a Weak Prompt</h3><p>Pairs take a lazy one-line prompt a youth worker might type and rebuild it with Context, Role, Action, Format and Tone, then compare the two answers side by side.</p><span class="card-more">More info →</span></div>
+<div class="card navy reveal" data-detail="dig_3"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div><h3>World Café on Digital Ethics</h3><p>Four tables: digital responsibility, data protection, academic integrity in the age of AI and youth work ethics online. Everyone visits every table; the hosts harvest the ideas.</p><span class="card-more">More info →</span></div></div></div></section>
+
+<section class="activities geo" id="programme">
+  <div class="tri c" style="left:0;top:40px"></div>
+  <div class="container"><div class="center reveal"><span class="section-label">Running Order</span><h2 class="section-title">Seven <span class="highlight">scenes</span></h2>
+  <p class="lead">Five activity days plus two travel days in Amsterdam. Click a day for the full story.</p></div>
+  <div class="activities-grid"><div class="activity-card reveal" data-detail="day_0"><div class="activity-number">01</div><div class="activity-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><div class="day-badge">Arrival</div><h3>Arrival in Amsterdam</h3><p>Participants arrive from six countries, take the free ferry across the IJ to the hostel at Badhuiskade and meet over a welcome dinner.</p></div>
+<div class="activity-card reveal" data-detail="day_1"><div class="activity-number">02</div><div class="activity-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div><div class="day-badge">Day 1</div><h3>Foundations</h3><p>Name games, Human Bingo, speed dating, the rules of the group, fears, expectations and contributions, and the Mission Impossible challenge around Amsterdam Noord.</p></div>
+<div class="activity-card reveal" data-detail="day_2"><div class="activity-number">03</div><div class="activity-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="day-badge">Day 2</div><h3>Theatre &amp; Storytelling</h3><p>Erasmus+ and Youthpass workshop, the Theatre Toolbox research, Silent Lines, Colombian Hypnosis, Body Stories and the extended Forum Theatre on breaking barriers to participation. Intercultural evening.</p></div>
+<div class="activity-card reveal" data-detail="day_3"><div class="activity-number">04</div><div class="activity-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1h-2a2 2 0 0 0 0 4h2v1a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-1h2a2 2 0 0 0 0-4H4v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><path d="M9 12h6M12 9v6"/></svg></div><div class="day-badge">Day 3</div><h3>Digital Awareness</h3><p>AI SWOT analysis, CRAFT prompts, a test drive of the Systematic Hub platform, digital tools for youth workers, the Absolute Cinema film challenge and the World Café on digital ethics.</p></div>
+<div class="activity-card reveal" data-detail="day_4"><div class="activity-number">05</div><div class="activity-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.04Z"/></svg></div><div class="day-badge">Day 4</div><h3>Wellbeing &amp; Inclusion</h3><p>Emotional intelligence and group dynamics, tools for safe and inclusive learning environments, conflict transformation and communication, mindfulness and wellbeing practices for youth workers. Intercultural evening II.</p></div>
+<div class="activity-card reveal" data-detail="day_5"><div class="activity-number">06</div><div class="activity-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><div class="day-badge">Day 5</div><h3>Action &amp; Closing</h3><p>Designing participatory youth activities with theatre and digital tools, action planning for local follow-up, dissemination materials, evaluation and the Youthpass ceremony. Farewell party.</p></div>
+<div class="activity-card reveal" data-detail="day_6"><div class="activity-number">07</div><div class="activity-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div><div class="day-badge">Departure</div><h3>Curtain Falls</h3><p>Check-out and departures from Amsterdam with a toolkit, new partners and an action plan for the months ahead.</p></div></div>
+  <p class="breaks">Every day ends with reflection groups and the personal <a href="https://iampashov.github.io/creative-futures-reflection/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">learning diary</a>, followed by an evening programme.</p>
+  </div>
+</section>
+
+<section class="big-type">
+  <div class="tri a" style="left:-20px;top:-20px;border-width:0 0 200px 200px"></div><div class="tri a" style="right:-20px;bottom:-20px;border-width:0 0 200px 200px;transform:rotate(180deg)"></div>
+  <h2>The Stage<span class="alt">Is Yours</span><br>Theatre, Tech &amp; Participation<span class="small">#CreativeFutures · #ErasmusPlus</span></h2>
+</section>
+
+<section class="results" id="results"><div class="container"><div class="center reveal"><span class="section-label">Results</span><h2 class="section-title">What we take <span class="highlight">home</span></h2>
+  <p class="lead">What the week produces for the participants, their organisations and anyone who opens the toolkit.</p></div>
+  <div class="grid g4"><div class="card reveal" data-detail="res_0"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><p style="margin-top:16px;font-weight:600;color:var(--navy)">A toolkit of theatre, storytelling and digital methods tested during the week, published here as open educational resources.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="res_1"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1h-2a2 2 0 0 0 0 4h2v1a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-1h2a2 2 0 0 0 0-4H4v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><path d="M9 12h6M12 9v6"/></svg></div><p style="margin-top:16px;font-weight:600;color:var(--navy)">Short films and viral shorts by five crews, the AI SWOT matrix and the live team sheets on digital and AI tools for youth workers.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="res_2"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><p style="margin-top:16px;font-weight:600;color:var(--navy)">One action plan per participant: a local follow-up activity with young people and one internal sharing action in the sending organisation.</p><span class="card-more">More info →</span></div>
+<div class="card reveal" data-detail="res_3"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><p style="margin-top:16px;font-weight:600;color:var(--navy)">A Youthpass certificate for every participant documenting the eight key competences developed, and a personal learning diary.</p><span class="card-more">More info →</span></div></div></div></section>
+
+
+<section class="toolkit" id="toolkit"><div class="container"><div class="center reveal"><span class="section-label">Open Educational Resources</span><h2 class="section-title">The <span class="highlight">toolkit</span></h2>
+  <p class="lead">Action plans, the digital storytelling videos, the toolkit of digital and AI tools for youth workers, and the method sheets of the week. Folders open in Google Drive; files can be downloaded, adapted and translated under a Creative Commons licence (CC BY-NC-SA).</p></div>
+  <div id="resources"></div>
+  <div id="res-empty">No resources yet. Add the first one below.</div>
+  <div class="section-actions"><button id="add-res-btn" class="dl-btn" type="button">&#x2795; Add resource</button></div>
+</div></section>
+
+<section class="campaign geo" id="campaign">
+  <div class="tri a" style="left:-10px;bottom:0"></div>
+  <div class="container"><div class="center reveal"><span class="section-label">Dissemination</span><h2 class="section-title">#Creative<span class="highlight">Futures</span></h2>
+  <p class="lead">Posters, visuals and quote cards created by the participants, and the reels, films and posts that carry the project to six countries.</p></div>
+  <div id="opp-wall"></div>
+  <div id="opp-empty">No visuals yet. Use the button below to upload posters and images.</div>
+  <div class="section-actions"><button id="add-opp-btn" class="dl-btn" type="button">&#x2795; Add visuals and posters</button></div>
+  <h3 class="sub-title">Posts &amp; Reels</h3>
+  <p class="sub-lead">Daily reels, films, interviews with locals and posts from all six countries. One click takes you to the post.</p>
+  <div id="opp-links"></div>
+  <div id="links-empty">No posts linked yet. Add the first link below.</div>
+  <div class="section-actions"><button id="add-link-btn" class="dl-btn" type="button">&#x2795; Add a post or reel link</button></div>
+</section>
+
+<section class="testimonials geo" id="testimonials">
+  <div class="tri c" style="right:0;top:40px"></div>
+  <div class="container"><div class="center reveal"><span class="section-label">Voices</span><h2 class="section-title">What Participants <span class="highlight">Said</span></h2>
+  <p class="lead">One voice from each country. In Edit Mode click a card to add a photo, then write the quote and the person's name.</p></div>
+  <div class="testi-grid">
+<div class="testi-card reveal"><div class="photo-frame testi-photo" data-ckey="img_testi_nl"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add photo</div><p class="testi-quote" data-ckey="testi_q_nl">Add a short quote from a participant from Netherlands.</p><div class="testi-name" data-ckey="testi_n_nl">Name, Netherlands</div></div>
+<div class="testi-card reveal"><div class="photo-frame testi-photo" data-ckey="img_testi_gr"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add photo</div><p class="testi-quote" data-ckey="testi_q_gr">Add a short quote from a participant from Greece.</p><div class="testi-name" data-ckey="testi_n_gr">Name, Greece</div></div>
+<div class="testi-card reveal"><div class="photo-frame testi-photo" data-ckey="img_testi_it"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add photo</div><p class="testi-quote" data-ckey="testi_q_it">Add a short quote from a participant from Italy.</p><div class="testi-name" data-ckey="testi_n_it">Name, Italy</div></div>
+<div class="testi-card reveal"><div class="photo-frame testi-photo" data-ckey="img_testi_al"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add photo</div><p class="testi-quote" data-ckey="testi_q_al">Add a short quote from a participant from Albania.</p><div class="testi-name" data-ckey="testi_n_al">Name, Albania</div></div>
+<div class="testi-card reveal"><div class="photo-frame testi-photo" data-ckey="img_testi_tr"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add photo</div><p class="testi-quote" data-ckey="testi_q_tr">Add a short quote from a participant from Türkiye.</p><div class="testi-name" data-ckey="testi_n_tr">Name, Türkiye</div></div>
+<div class="testi-card reveal"><div class="photo-frame testi-photo" data-ckey="img_testi_es"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add photo</div><p class="testi-quote" data-ckey="testi_q_es">Add a short quote from a participant from Spain.</p><div class="testi-name" data-ckey="testi_n_es">Name, Spain</div></div>
+  </div></div>
+</section>
+
+<section class="profile geo" id="profile">
+  <div class="tri b" style="right:0;top:0;transform:scaleX(-1)"></div>
+  <div class="container"><div class="center reveal"><span class="section-label">The Cast</span><h2 class="section-title">Participant <span class="highlight">profile</span></h2>
+  <p class="lead">Who came to Amsterdam and what they brought with them.</p></div>
+  <div class="grid g4"><div class="card reveal"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15"/><path d="M15 6v15"/></svg></div><h3>Six countries</h3><p>Participants come from the Netherlands, Greece, Italy, Albania, Türkiye and Spain, each with a different youth work reality.</p></div>
+<div class="card reveal"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="8" cy="12" r="2.5"/><path d="M14 10h5M14 14h5"/></svg></div><h3>Youth workers and trainers</h3><p>Active youth workers, trainers, facilitators, NGO staff and educators engaged in non-formal education and community-based work.</p></div>
+<div class="card reveal"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Fewer opportunities</h3><p>Priority was given to youth workers supporting young people facing economic, educational, geographical or social barriers.</p></div>
+<div class="card reveal"><div class="corner"></div><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div><h3>Multipliers</h3><p>32 participants willing to transfer what they learned to colleagues, young people and communities after the mobility.</p></div></div></div>
+</section>
+
+<section class="teams" id="teams"><div class="container"><div class="center reveal"><span class="section-label">The Ensemble</span><h2 class="section-title">Meet the <span class="highlight">people</span></h2>
+  <p class="lead">32 youth workers from six countries. In Edit Mode click a name to add that person's photo.</p></div>
+  <div class="teams-wrapper"><div class="team-card reveal" style="--tc:#FF6A4D"><div class="team-header"><h3>🇳🇱 Netherlands</h3><div class="count">Coordinator · Host</div></div><div class="team-photos"><div class="team-photo-slot" data-ckey="img_nl_1"><span class="plus">+</span>Ebubekir Aydinli</div><div class="team-photo-slot" data-ckey="img_nl_2"><span class="plus">+</span>Hasan Talat Yakarer</div><div class="team-photo-slot" data-ckey="img_nl_3"><span class="plus">+</span>Mustafa Kaan Öztürk</div><div class="team-photo-slot" data-ckey="img_nl_4"><span class="plus">+</span>Younes El Boukhallouki</div><div class="team-photo-slot" data-ckey="img_nl_5"><span class="plus">+</span>Huseyin Albayrak</div><div class="team-photo-slot" data-ckey="img_nl_6"><span class="plus">+</span>Mert Erol</div></div></div>
+<div class="team-card reveal" style="--tc:#0D5EAF"><div class="team-header"><h3>🇬🇷 Greece</h3><div class="count">5 participants</div></div><div class="team-photos"><div class="team-photo-slot" data-ckey="img_gr_1"><span class="plus">+</span>Nikolaos Karathanos</div><div class="team-photo-slot" data-ckey="img_gr_2"><span class="plus">+</span>Theocharis Daskalos</div><div class="team-photo-slot" data-ckey="img_gr_3"><span class="plus">+</span>Eirini Anna Peza</div><div class="team-photo-slot" data-ckey="img_gr_4"><span class="plus">+</span>Viktoria Giannara</div><div class="team-photo-slot" data-ckey="img_gr_5"><span class="plus">+</span>Daniil Kapetas</div></div></div>
+<div class="team-card reveal" style="--tc:#009246"><div class="team-header"><h3>🇮🇹 Italy</h3><div class="count">5 participants</div></div><div class="team-photos"><div class="team-photo-slot" data-ckey="img_it_1"><span class="plus">+</span>Asia Battistella</div><div class="team-photo-slot" data-ckey="img_it_2"><span class="plus">+</span>Alessia Borgo</div><div class="team-photo-slot" data-ckey="img_it_3"><span class="plus">+</span>Matteo Ventrice</div><div class="team-photo-slot" data-ckey="img_it_4"><span class="plus">+</span>Phaolo Alla</div><div class="team-photo-slot" data-ckey="img_it_5"><span class="plus">+</span>Anna Matveeva</div></div></div>
+<div class="team-card reveal" style="--tc:#E41E20"><div class="team-header"><h3>🇦🇱 Albania</h3><div class="count">5 participants</div></div><div class="team-photos"><div class="team-photo-slot" data-ckey="img_al_1"><span class="plus">+</span>Eljan Qaseja</div><div class="team-photo-slot" data-ckey="img_al_2"><span class="plus">+</span>Ester Gostivari</div><div class="team-photo-slot" data-ckey="img_al_3"><span class="plus">+</span>Kejdi Isaku</div><div class="team-photo-slot" data-ckey="img_al_4"><span class="plus">+</span>Erina Kurti</div><div class="team-photo-slot" data-ckey="img_al_5"><span class="plus">+</span>Gjovalin Marfana</div></div></div>
+<div class="team-card reveal" style="--tc:#E30A17"><div class="team-header"><h3>🇹🇷 Türkiye</h3><div class="count">5 participants</div></div><div class="team-photos"><div class="team-photo-slot" data-ckey="img_tr_1"><span class="plus">+</span>Murat Savas</div><div class="team-photo-slot" data-ckey="img_tr_2"><span class="plus">+</span>İsmail Şahin</div><div class="team-photo-slot" data-ckey="img_tr_3"><span class="plus">+</span>Neslihan Top</div><div class="team-photo-slot" data-ckey="img_tr_4"><span class="plus">+</span>Azra Eylül Yakarer</div><div class="team-photo-slot" data-ckey="img_tr_5"><span class="plus">+</span>Ceylan Dayanç</div></div></div>
+<div class="team-card reveal" style="--tc:#F6C915"><div class="team-header"><h3>🇪🇸 Spain</h3><div class="count">6 participants</div></div><div class="team-photos"><div class="team-photo-slot" data-ckey="img_es_1"><span class="plus">+</span>Pablo Rodriguez Romero</div><div class="team-photo-slot" data-ckey="img_es_2"><span class="plus">+</span>David Vidal Castro</div><div class="team-photo-slot" data-ckey="img_es_3"><span class="plus">+</span>Estefanía Viñal Vázquez</div><div class="team-photo-slot" data-ckey="img_es_4"><span class="plus">+</span>Rubén Sánchez Da Silva</div><div class="team-photo-slot" data-ckey="img_es_5"><span class="plus">+</span>Xiana Souto Regueiro</div><div class="team-photo-slot" data-ckey="img_es_6"><span class="plus">+</span>Jana Tort López</div></div></div>
+</div></div></section>
+
+<section class="partners geo" id="partners">
+  <div class="tri c" style="right:0;top:0;transform:scaleX(-1)"></div>
+  <div class="container"><div class="center reveal"><span class="section-label">Consortium</span><h2 class="section-title">Our <span class="highlight">Partners</span></h2>
+  <p class="lead">Six organisations from six countries make Creative Futures possible.</p></div>
+  <div class="partners-grid"><div class="partner-card reveal"><div class="p-flag">🇳🇱</div><h4>Stichting UnitySphere Europe (SUSE)</h4><div class="p-role">Netherlands · Coordinator and host</div></div>
+<div class="partner-card reveal"><div class="p-flag">🇬🇷</div><h4>SIMMETECHO</h4><div class="p-role">Greece</div></div>
+<div class="partner-card reveal"><div class="p-flag">🇮🇹</div><h4>IMI Indonesia Meets Italy</h4><div class="p-role">Italy</div></div>
+<div class="partner-card reveal"><div class="p-flag">🇦🇱</div><h4>The Youth of Ura</h4><div class="p-role">Albania</div></div>
+<div class="partner-card reveal"><div class="p-flag">🇹🇷</div><h4>Association of Academicians Union</h4><div class="p-role">Türkiye</div></div>
+<div class="partner-card reveal"><div class="p-flag">🇪🇸</div><h4>Asociación Cultural Integra</h4><div class="p-role">Spain</div></div></div></div>
+</section>
+
+<section class="gallery" id="gallery"><div class="container"><div class="center reveal"><span class="section-label">Memories</span><h2 class="section-title">Photo <span class="highlight">Gallery</span></h2>
+  <p class="lead">Moments from the week. Click a photo to enlarge it, or open the full photo directory on Google Drive, one folder per day.</p>
+  <div class="section-actions" style="margin-top:14px"><a class="dl-btn" href="https://drive.google.com/drive/folders/1CY3CBc0xvzYovF5b9lh-IuXZU-EsMk27" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Open the photo directory</span></a></div></div>
+  <div id="photo-wall"></div>
+  <div id="wall-empty">No photos yet. Use the button below to add the first ones.</div>
+  <div class="gallery-actions"><button id="add-photo-btn" type="button">&#x2795; Add photos to the wall</button><div class="wall-hint">In Edit Mode you can add as many photos as you like. Everyone sees them.</div></div>
+</div></section>
+
+<section class="connect" id="connect">
+  <h2>Keep in Touch <span>With Us!</span></h2>
+  <div class="connect-buttons">
+    <a class="cbtn" href="https://suseu.eu" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>suseu.eu</span></a>
+    <a class="cbtn" href="https://www.instagram.com/unitysphere/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>@unitysphere</span></a>
+    <a class="cbtn" href="https://www.facebook.com/Unity.Europe.Project/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>Unity Europe on Facebook</span></a>
+  </div>
+  <img class="vmdo-poster" src="suse-logoters.svg" alt="Stichting UnitySphere Europe">
+</section>
+<div class="eu-logobar bottom"><span class="eu-logo"><svg viewBox='0 0 212 60' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Co-funded by the European Union'><rect x='0' y='11.0' width='57' height='38' fill='#003399'/><polygon points='28.50,15.22 28.97,16.68 30.51,16.68 29.27,17.58 29.74,19.04 28.50,18.14 27.26,19.04 27.73,17.58 26.49,16.68 28.03,16.68' fill='#FFCC00'/><polygon points='34.83,16.92 35.31,18.38 36.84,18.38 35.60,19.28 36.07,20.74 34.83,19.84 33.59,20.74 34.07,19.28 32.83,18.38 34.36,18.38' fill='#FFCC00'/><polygon points='39.47,21.56 39.94,23.01 41.48,23.01 40.24,23.92 40.71,25.37 39.47,24.47 38.23,25.37 38.70,23.92 37.46,23.01 39.00,23.01' fill='#FFCC00'/><polygon points='41.17,27.89 41.64,29.35 43.17,29.35 41.93,30.25 42.41,31.71 41.17,30.81 39.93,31.71 40.40,30.25 39.16,29.35 40.69,29.35' fill='#FFCC00'/><polygon points='39.47,34.22 39.94,35.68 41.48,35.68 40.24,36.58 40.71,38.04 39.47,37.14 38.23,38.04 38.70,36.58 37.46,35.68 39.00,35.68' fill='#FFCC00'/><polygon points='34.83,38.86 35.31,40.32 36.84,40.32 35.60,41.22 36.07,42.68 34.83,41.78 33.59,42.68 34.07,41.22 32.83,40.32 34.36,40.32' fill='#FFCC00'/><polygon points='28.50,40.56 28.97,42.01 30.51,42.01 29.27,42.92 29.74,44.37 28.50,43.47 27.26,44.37 27.73,42.92 26.49,42.01 28.03,42.01' fill='#FFCC00'/><polygon points='22.17,38.86 22.64,40.32 24.17,40.32 22.93,41.22 23.41,42.68 22.17,41.78 20.93,42.68 21.40,41.22 20.16,40.32 21.69,40.32' fill='#FFCC00'/><polygon points='17.53,34.22 18.00,35.68 19.54,35.68 18.30,36.58 18.77,38.04 17.53,37.14 16.29,38.04 16.76,36.58 15.52,35.68 17.06,35.68' fill='#FFCC00'/><polygon points='15.83,27.89 16.31,29.35 17.84,29.35 16.60,30.25 17.07,31.71 15.83,30.81 14.59,31.71 15.07,30.25 13.83,29.35 15.36,29.35' fill='#FFCC00'/><polygon points='17.53,21.56 18.00,23.01 19.54,23.01 18.30,23.92 18.77,25.37 17.53,24.47 16.29,25.37 16.76,23.92 15.52,23.01 17.06,23.01' fill='#FFCC00'/><polygon points='22.17,16.92 22.64,18.38 24.17,18.38 22.93,19.28 23.41,20.74 22.17,19.84 20.93,20.74 21.40,19.28 20.16,18.38 21.69,18.38' fill='#FFCC00'/><text x='71' y='28.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>Co-funded by the</text><text x='71' y='46.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>European Union</text></svg></span><span class="eu-logo"><svg version="1.1" viewBox="0 0 312.13 89.326" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">   <defs>     <g id="et_a">       <g id="et_b">         <path id="et_g" transform="rotate(18 3.1569 -.5)" d="m0 0v1h0.5z"/>         <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_g"/>       </g>       <g id="et_c">         <use transform="rotate(72)" width="100%" height="100%" xlink:href="#et_b"/>         <use transform="rotate(144)" width="100%" height="100%" xlink:href="#et_b"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_c"/>     </g>   </defs>   <path d="m131.16 72.78h-18.53v-28.125h18.53v3.3245h-14.79v7.707h14.79v3.3242h-14.79v10.446h14.79v3.324" fill="#2765b2" stroke-width=".26458"/>   <path d="m148.52 55.56h-0.18885c-0.52885-0.12601-1.0418-0.21696-1.5392-0.27384-0.49773-0.0569-1.0864-0.0853-1.7661-0.0853-1.0957 0-2.1534 0.24276-3.1734 0.72729-1.0203 0.48522-2.0026 1.1115-2.9469 1.8798v14.978h-3.551v-21.099h3.551v3.1168c1.4102-1.1331 2.6538-1.9361 3.7306-2.4084 1.0765-0.47196 2.1749-0.70842 3.2962-0.70842 0.6168 0 1.0639 0.0162 1.3411 0.0476 0.27681 0.0311 0.6922 0.0913 1.2465 0.17893v3.646" fill="#2765b2" stroke-width=".26458"/>   <path d="m164.08 67.59v-5.8743c-1.0825 0.0624-2.3578 0.15775-3.8246 0.28268-1.4671 0.1261-2.6293 0.3089-3.4851 0.54806-1.02 0.29001-1.8448 0.74025-2.4745 1.3507-0.62971 0.61095-0.94424 1.4513-0.94424 2.5218 0 1.2086 0.36512 2.1188 1.0957 2.7294 0.73025 0.61081 1.8445 0.91569 3.343 0.91569 1.2468 0 2.3862-0.24209 3.4189-0.72654 1.0322-0.48525 1.9897-1.0673 2.8707-1.7473zm3.5327 5.194h-3.5327v-2.2473c-0.31454 0.21368-0.73951 0.51302-1.2746 0.89662-0.53546 0.38433-1.0547 0.68987-1.5584 0.91646-0.59166 0.2894-1.272 0.53179-2.0399 0.72697-0.7683 0.19546-1.6685 0.293-2.7009 0.293-1.902 0-3.5137-0.62968-4.8361-1.8888-1.3223-1.2595-1.9834-2.8649-1.9834-4.8167 0-1.5994 0.34295-2.8932 1.0295-3.8814 0.68593-0.98859 1.6649-1.7662 2.9371-2.3327 1.2846-0.56716 2.8263-0.95085 4.6276-1.1526 1.8008-0.20142 3.7335-0.35243 5.7986-0.45334v-0.54774c0-0.80526-0.14155-1.4733-0.42434-2.0025-0.28377-0.52824-0.6899-0.9443-1.2191-1.2466-0.50303-0.2894-1.1076-0.4845-1.8131-0.58539-0.70543-0.10054-1.442-0.15114-2.2099-0.15114-0.93199 0-1.9708 0.1227-3.1165 0.36843-1.1463 0.2454-2.33 0.60127-3.551 1.0669h-0.18918v-3.6076c0.69255-0.18852 1.6933-0.39656 3.0033-0.62341 1.3094-0.22655 2.6002-0.33967 3.8722-0.33967 1.4856 0 2.7794 0.1227 3.8814 0.36809 1.102 0.24538 2.0561 0.66476 2.8615 1.2564 0.79407 0.57944 1.398 1.3289 1.814 2.2473 0.4154 0.91974 0.62341 2.059 0.62341 3.4189v14.318" fill="#2765b2" stroke-width=".26458"/>   <path d="m188.18 66.7c0 1.9269-0.7964 3.5078-2.3892 4.7413-1.5938 1.2343-3.7687 1.8514-6.5262 1.8514-1.5617 0-2.9938-0.18617-4.2974-0.55759-1.3028-0.37144-2.3958-0.77684-3.2769-1.218v-3.9857h0.18852c1.1208 0.84376 2.3674 1.5141 3.7402 2.0115 1.3725 0.49805 2.6884 0.74609 3.9478 0.74609 1.5614 0 2.7829-0.25128 3.6639-0.75538 0.88172-0.50374 1.3226-1.2967 1.3226-2.3802 0-0.83042-0.23912-1.4605-0.71768-1.8888-0.4789-0.42762-1.398-0.79312-2.7575-1.0954-0.50403-0.11305-1.1615-0.24534-1.9741-0.39651-0.81195-0.15114-1.5521-0.31483-2.2195-0.49117-1.8508-0.49147-3.1639-1.2118-3.9383-2.1627-0.77444-0.95086-1.1615-2.1186-1.1615-3.5044 0-0.86878 0.17959-1.687 0.53811-2.4549 0.35917-0.7683 0.90355-1.4549 1.6341-2.0588 0.7048-0.59235 1.6021-1.0613 2.6919-1.4076 1.0891-0.34629 2.3075-0.51925 3.655-0.51925 1.2591 0 2.534 0.15445 3.8246 0.46236 1.2908 0.3089 2.3644 0.68363 3.221 1.1242v3.7968h-0.18885c-0.90686-0.66707-2.0088-1.231-3.306-1.6904-1.2971-0.46006-2.5681-0.68991-3.815-0.68991-1.2971 0-2.3925 0.24871-3.2864 0.74613-0.89495 0.49808-1.3418 1.2376-1.3418 2.2195 0 0.86879 0.27054 1.5237 0.81259 1.9642 0.52917 0.44119 1.3848 0.80036 2.5691 1.077 0.65418 0.15101 1.3881 0.30218 2.2 0.45333 0.81259 0.15115 1.4889 0.29001 2.031 0.41545 1.649 0.37804 2.921 1.0262 3.8156 1.9456 0.89397 0.93197 1.3408 2.166 1.3408 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m222.74 72.78h-3.5512v-12.013c0-0.90678-0.0407-1.782-0.1227-2.6257-0.082-0.84363-0.25499-1.5174-0.51924-2.021-0.29004-0.54136-0.70543-0.95014-1.2468-1.228-0.54107-0.27649-1.3223-0.41539-2.3422-0.41539-0.99483 0-1.9893 0.24871-2.9842 0.74612-0.99483 0.49808-1.9897 1.1304-2.9845 1.8983 0.0377 0.2902 0.0691 0.62686 0.0946 1.0104 0.0251 0.38434 0.038 0.76534 0.038 1.1434v13.505h-3.5518v-12.013c0-0.93199-0.0407-1.8163-0.1227-2.654-0.082-0.83704-0.25499-1.5074-0.51924-2.0115-0.29004-0.54139-0.70543-0.94753-1.2465-1.2184-0.54139-0.27053-1.3226-0.40613-2.3422-0.40613-0.9697 0-1.9427 0.23978-2.9186 0.71768-0.976 0.47858-1.9487 1.0898-2.9184 1.8326v15.753h-3.5507v-21.099h3.5507v2.3422c1.1086-0.91842 2.2129-1.6368 3.3152-2.153 1.102-0.51594 2.2761-0.77457 3.5229-0.77457 1.4354 0 2.6535 0.30228 3.655 0.90686 1.0011 0.60425 1.7473 1.442 2.2381 2.5122 1.436-1.2092 2.7453-2.0806 3.9288-2.6161 1.184-0.53547 2.4494-0.80301 3.797-0.80301 2.3167 0 4.0259 0.70215 5.1279 2.1058 1.102 1.4046 1.653 3.3655 1.653 5.8843v13.694" fill="#2765b2" stroke-width=".26458"/>   <path d="m245.11 72.78h-3.5507v-2.3422c-1.1969 0.94427-2.3422 1.6693-3.4375 2.1722-1.0957 0.50409-2.3048 0.75576-3.6272 0.75576-2.2162 0-3.9418-0.67694-5.1755-2.0306-1.2343-1.3534-1.8504-3.3398-1.8504-5.9592v-13.695h3.5507v12.013c0 1.0704 0.0503 1.9865 0.15114 2.7488 0.10087 0.76131 0.31454 1.4131 0.64193 1.9545 0.33999 0.55438 0.78118 0.95721 1.3223 1.2091 0.54139 0.25205 1.3282 0.37734 2.3611 0.37734 0.91911 0 1.9235-0.23898 3.0125-0.71765 1.0891-0.47813 2.1067-1.0891 3.0509-1.832v-15.754h3.5507v21.099" fill="#2765b2" stroke-width=".26458"/>   <path d="m265.85 66.7c0 1.9269-0.7964 3.5078-2.3895 4.7413-1.5928 1.2343-3.7682 1.8514-6.5259 1.8514-1.5614 0-2.994-0.18617-4.2971-0.55759-1.3034-0.37144-2.3958-0.77684-3.2777-1.218v-3.9857h0.18951c1.1205 0.84376 2.3674 1.5141 3.7399 2.0115 1.3722 0.49805 2.6879 0.74609 3.9476 0.74609 1.561 0 2.7829-0.25128 3.6645-0.75538 0.88106-0.50374 1.3223-1.2967 1.3223-2.3802 0-0.83042-0.23978-1.4605-0.71768-1.8888-0.47858-0.42762-1.398-0.79312-2.7583-1.0954-0.50371-0.11305-1.1615-0.24534-1.9735-0.39651-0.81259-0.15114-1.5521-0.31483-2.2195-0.49117-1.8511-0.49147-3.1639-1.2118-3.9383-2.1627s-1.1615-2.1186-1.1615-3.5044c0-0.86878 0.17892-1.687 0.53811-2.4549 0.35917-0.7683 0.90323-1.4549 1.6338-2.0588 0.70543-0.59235 1.6027-1.0613 2.6919-1.4076 1.0888-0.34629 2.3072-0.51925 3.6544-0.51925 1.2597 0 2.534 0.15445 3.8256 0.46236 1.2905 0.3089 2.3641 0.68363 3.2205 1.1242v3.7968h-0.18918c-0.9065-0.66707-2.0085-1.231-3.3052-1.6904-1.2971-0.46006-2.5691-0.68991-3.8158-0.68991-1.2968 0-2.3925 0.24871-3.2864 0.74613-0.89397 0.49808-1.3411 1.2376-1.3411 2.2195 0 0.86879 0.27088 1.5237 0.81195 1.9642 0.52917 0.44119 1.3858 0.80036 2.5691 1.077 0.65484 0.15101 1.3881 0.30218 2.2007 0.45333 0.81195 0.15115 1.4889 0.29001 2.0304 0.41545 1.6497 0.37804 2.9215 1.0262 3.8156 1.9456 0.89396 0.93197 1.3411 2.166 1.3411 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m295.59 61.98h-10.295v10.295h-3.1353v-10.295h-10.294v-3.0226h10.294v-10.294h3.1353v10.294h10.295v3.0226" fill="#2765b2" stroke-width=".26458"/>   <g transform="matrix(.10417 0 0 .10417 16.54 16.54)" stroke-width="2.54">     <rect width="810" height="540" fill="#2765b2"/>     <g transform="matrix(30,0,0,30,405,270)" fill="#fc0">       <use y="-6" width="100%" height="100%" xlink:href="#et_a"/>       <use y="6" width="100%" height="100%" xlink:href="#et_a"/>       <g id="et_f">         <use x="-6" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(216 -2.3442 -2.1107)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(144,-2.1107,-2.3442)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72,-4.6626,-2.0759)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72 -5.0759 .5335)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_f"/>     </g>   </g> </svg></span><span class="eu-logo vmdo"><img src="suse-logo.svg" alt="Stichting UnitySphere Europe"></span></div>
+<div class="footer-line"><p><strong>Creative Futures: Theatre, Tech and European Participation</strong> · Project 2026-1-NL02-KA153-YOU-000398144 · Erasmus+ KA153 Mobility of Youth Workers · Funded by the European Union. Views and opinions expressed are those of the authors only and do not necessarily reflect those of the European Union or the National Agency. Neither the European Union nor the granting authority can be held responsible for them.</p></div>
+
+<div id="detail-store"><div class="detail-pane" id="detail_obj_0"><div class="photo-frame" data-ckey="img_detail_obj_0"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Objective</div><h3>Strengthen Creative Methods</h3><p data-ckey="detail_obj_0">Every session of the week is a method the participants can run themselves: energisers, team research, forum theatre, body stories, world café, film challenges. Each one comes with a participant sheet and a facilitator guide, so that creative facilitation is practised, not only discussed.</p></div></div><div class="detail-pane" id="detail_obj_1"><div class="photo-frame" data-ckey="img_detail_obj_1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Objective</div><h3>Theatre &amp; Storytelling</h3><p data-ckey="detail_obj_1">Theatre and storytelling run through the whole programme: image theatre and Colombian Hypnosis as a warm-up, Body Stories as a storyboard in three frozen pictures, forum theatre on exclusion and participation barriers, and finally digital storytelling with a phone as the stage.</p></div></div><div class="detail-pane" id="detail_obj_2"><div class="photo-frame" data-ckey="img_detail_obj_2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Objective</div><h3>Digital Awareness</h3><p data-ckey="detail_obj_2">The digital day looks at artificial intelligence with open eyes: a SWOT analysis of AI in youth work, prompts written with the CRAFT framework, a test of digital and AI tools against inclusion criteria, fact-checking of fake content, and a world café on data, privacy and integrity.</p></div></div><div class="detail-pane" id="detail_obj_3"><div class="photo-frame" data-ckey="img_detail_obj_3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Objective</div><h3>Emotional Intelligence</h3><p data-ckey="detail_obj_3">The wellbeing day explores how emotions influence learning and participation, how to build trust and safety in a group, how to transform conflict through communication, and how youth workers look after their own wellbeing. Daily reflection groups and a personal learning diary connect it to practice.</p></div></div><div class="detail-pane" id="detail_obj_4"><div class="photo-frame" data-ckey="img_detail_obj_4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Objective</div><h3>Intercultural Learning</h3><p data-ckey="detail_obj_4">Thirty-two youth workers from the Netherlands, Greece, Italy, Albania, Türkiye and Spain work in mixed teams all week, present their countries at two intercultural evenings and compare how youth work, participation and digital life look at home.</p></div></div><div class="detail-pane" id="detail_obj_5"><div class="photo-frame" data-ckey="img_detail_obj_5"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Objective</div><h3>Facilitators of Change</h3><p data-ckey="detail_obj_5">The last day turns learning into action: each participant designs a participatory youth activity combining theatre and digital tools and writes an action plan for a local follow-up, so that the project reaches young people in six countries within months.</p></div></div><div class="detail-pane" id="detail_topic_0"><div class="photo-frame" data-ckey="img_detail_topic_0"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Method</div><h3>What Are You Doing?</h3><p data-ckey="detail_topic_0">Everyone stands in a circle. The first person mimes an action, for example brushing their teeth. The next person asks "What are you doing?" and the answer must be something completely different, "I am flying a plane", which the next person then has to mime. The game rewards speed over perfection and gets even a shy group laughing within two minutes.</p></div></div><div class="detail-pane" id="detail_topic_1"><div class="photo-frame" data-ckey="img_detail_topic_1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Method</div><h3>Colombian Hypnosis</h3><p data-ckey="detail_topic_1">In pairs: A holds an open palm twenty centimetres from B's face and moves slowly; B follows the hand with the face, keeping the distance. After two minutes they switch, then one leader guides two followers. The debrief asks how it felt to lead and to follow, and who leads young people today: friends, adults, or the algorithm on their screen.</p></div></div><div class="detail-pane" id="detail_topic_2"><div class="photo-frame" data-ckey="img_detail_topic_2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Method</div><h3>Forum Theatre</h3><p data-ckey="detail_topic_2">Each team received a situation card: the newcomer whose Dutch is still basic, the wheelchair user nobody asked about the trip, the youth council where the official ignores one young person, the mocking meme in the class group chat, adults deciding for young people. The plays were performed once with a negative ending, then replayed while the next team stopped them, replaced characters and tried a better ending. No magic solutions allowed.</p></div></div><div class="detail-pane" id="detail_topic_3"><div class="photo-frame" data-ckey="img_detail_topic_3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Method</div><h3>Digital Storytelling</h3><p data-ckey="detail_topic_3">In the creative lab each crew took one intention of the project: Setting the Stage, Real or Fake?, Think Before You Prompt, Storytelling in the Digital Era, Europe Is Listening. They produced a short film of two to three minutes and two viral shorts, with consent asked on camera and any AI tool named in the credits. The videos are collected in the toolkit.</p></div></div><div class="detail-pane" id="detail_dig_0"><div class="photo-frame" data-ckey="img_detail_dig_0"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Digital activity</div><h3>AI SWOT Analysis</h3><p data-ckey="detail_dig_0">Strengths: what AI already does well for youth work. Weaknesses: where it fails and what it cannot do. Opportunities: what it could open up for young people and participation. Threats: deepfakes, manipulation, data, dependence. The four flipcharts became one matrix on the wall, and the group drew arrows from every threat to the strength or opportunity that could answer it.</p></div></div><div class="detail-pane" id="detail_dig_1"><div class="photo-frame" data-ckey="img_detail_dig_1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Digital activity</div><h3>Digital Tools for Youth Workers</h3><p data-ckey="detail_dig_1">Theatre and storytelling tools, video and participatory media, fact-checking and misinformation, youth participation and voice, reflection and wellbeing. For each tool the teams checked pricing, non-profit discounts, age limits, data and privacy, accessibility and low-data use, and wrote three honest lines about every AI tool they tested.</p></div></div><div class="detail-pane" id="detail_dig_2"><div class="photo-frame" data-ckey="img_detail_dig_2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Digital activity</div><h3>CRAFT: Rewrite a Weak Prompt</h3><p data-ckey="detail_dig_2">Context, Role, Action, Format, Tone. Pairs chose a weak prompt such as "write a play about bullying" or "explain fake news to kids", ran it as it was, rebuilt it with one sentence per letter and ran it again on the same tool. The comparison shows which element changed the answer most, usually Context and Role.</p></div></div><div class="detail-pane" id="detail_dig_3"><div class="photo-frame" data-ckey="img_detail_dig_3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Digital activity</div><h3>World Café on Digital Ethics</h3><p data-ckey="detail_dig_3">Four tables with a host each, four rounds of thirteen minutes, paper tablecloths covered in ideas. The harvest: principles of digital responsibility, a privacy checklist for youth activities, one red line, one green light and one grey zone for using AI, and a mini code of ethics for digital youth work.</p></div></div><div class="detail-pane" id="detail_res_0"><div class="photo-frame" data-ckey="img_detail_res_0"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Result</div><h3>A toolkit of theatre</h3><p data-ckey="detail_res_0">The participant sheets, facilitator guides and templates used during the week, from Human Bingo and Mission Impossible to forum theatre, body stories, the Theatre Toolbox, the AI SWOT, CRAFT prompts and the tools team sheets, free to download and adapt under a Creative Commons licence.</p></div></div><div class="detail-pane" id="detail_res_1"><div class="photo-frame" data-ckey="img_detail_res_1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Result</div><h3>Short films and viral shorts by five crews</h3><p data-ckey="detail_res_1">The films from the Absolute Cinema challenge, the AI SWOT flipcharts with the three rules for AI in youth work, and the team sheets on digital and AI tools for youth workers, with pricing, privacy notes and a beginner's guideline for each tool.</p></div></div><div class="detail-pane" id="detail_res_2"><div class="photo-frame" data-ckey="img_detail_res_2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Result</div><h3>One action plan per participant</h3><p data-ckey="detail_res_2">On the last day each participant writes an action plan: one local follow-up activity with young people using a method from the week, and one internal sharing action with colleagues. The plans are collected in a shared folder and followed up by the partner organisations.</p></div></div><div class="detail-pane" id="detail_res_3"><div class="photo-frame" data-ckey="img_detail_res_3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Result</div><h3>A Youthpass certificate for every participant documenting the eight key competences developed</h3><p data-ckey="detail_res_3">Every participant leaves with a Youthpass certificate and a personal learning diary filled in every day: ratings of each activity, notes on how to use it at home, and a self-assessment of the eight key competences that grows into a personal plan.</p></div></div><div class="detail-pane" id="detail_day_0"><div class="photo-frame" data-ckey="img_detail_day_0"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Arrival</div><h3>Arrival in Amsterdam</h3><p data-ckey="detail_day_0">Participants travel to Amsterdam during the day, take the free ferry from Central Station across the IJ and check in at the hostel at Badhuiskade 3 in Amsterdam Noord. Welcome dinner and a first evening together.</p></div></div><div class="detail-pane" id="detail_day_1"><div class="photo-frame" data-ckey="img_detail_day_1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Day 1</div><h3>Foundations</h3><p data-ckey="detail_day_1">The group meets: name, adjective and movement, Human Bingo, speed dating, the rules of the week written by the group, fears, expectations and contributions on three colours of sticky notes, and in the afternoon the Mission Impossible challenge with seventeen missions around the hostel and the neighbourhood.</p></div></div><div class="detail-pane" id="detail_day_2"><div class="photo-frame" data-ckey="img_detail_day_2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Day 2</div><h3>Theatre &amp; Storytelling</h3><p data-ckey="detail_day_2">Morning workshop on Erasmus+ opportunities and Youthpass, then the Theatre Toolbox: five teams research five applied theatre methods and present them with a demonstration. Afternoon on identity, belonging and social roles with Silent Lines, Colombian Hypnosis and Body Stories, and the extended forum theatre on breaking barriers to participation. First intercultural evening.</p></div></div><div class="detail-pane" id="detail_day_3"><div class="photo-frame" data-ckey="img_detail_day_3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Day 3</div><h3>Digital Awareness</h3><p data-ckey="detail_day_3">The digital day: an AI SWOT analysis in four teams, CRAFT prompt rewriting in pairs, a test drive of the Systematic Hub platform in five roles, the Tools for Creative Futures team research, the Absolute Cinema film challenge with one movie and two shorts per crew, and the World Café on ethical responsibilities in the digital world.</p></div></div><div class="detail-pane" id="detail_day_4"><div class="photo-frame" data-ckey="img_detail_day_4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Day 4</div><h3>Wellbeing &amp; Inclusion</h3><p data-ckey="detail_day_4">Emotional intelligence and group dynamics in youth work, tools for safe and inclusive learning environments, conflict transformation and communication exercises, mindfulness and wellbeing practices for youth workers, reflection groups and the learning journal. Second intercultural evening.</p></div></div><div class="detail-pane" id="detail_day_5"><div class="photo-frame" data-ckey="img_detail_day_5"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Day 5</div><h3>Action &amp; Closing</h3><p data-ckey="detail_day_5">Designing participatory youth activities with theatre and digital tools in small groups, action planning for local follow-up initiatives, creation of dissemination materials, evaluation of learning outcomes and the Youthpass ceremony, heart-shaped good-bye and the farewell party.</p></div></div><div class="detail-pane" id="detail_day_6"><div class="photo-frame" data-ckey="img_detail_day_6"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Add a photo</div><div class="detail-body"><div class="detail-label">Departure</div><h3>Curtain Falls</h3><p data-ckey="detail_day_6">Check-out by ten, the ferry back to Central Station and departures to six countries, with the toolkit, the films, the learning diary and an action plan for the months ahead.</p></div></div></div><template id="icon-pen"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></template><template id="icon-leaf"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></template><template id="icon-book"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></template><template id="icon-rocket"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></template><template id="icon-brain"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.04Z"/></svg></template><template id="icon-scale"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></template><template id="icon-globe"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></template><template id="icon-megaphone"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></template><template id="icon-ai"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1h-2a2 2 0 0 0 0 4h2v1a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-1h2a2 2 0 0 0 0-4H4v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><path d="M9 12h6M12 9v6"/></svg></template>
+<div class="modal" id="detail-modal"><div class="modal-box"><button class="modal-close" id="modal-close" type="button">&times;</button><div id="modal-body"></div></div></div>
+<div class="lightbox" id="lightbox"><button class="lb-close" id="lb-close">&times;</button><button class="lb-prev" id="lb-prev">&#8249;</button><img id="lb-img" alt=""><button class="lb-next" id="lb-next">&#8250;</button><div class="lb-count" id="lb-count"></div></div>
+<button class="back-top" id="backTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m18 15-6-6-6 6"/></svg></button>
+<div class="edit-toolbar"><span id="edit-status"></span><button id="undo-btn" type="button" title="Undo">&#x21B6;</button><button id="redo-btn" type="button" title="Redo">&#x21B7;</button><button id="toggle-edit" type="button">&#x270F; Edit Mode</button></div>
+<script>
+let editMode=false;
+const editableSelectors=[
+  '.hero-badge','.hero h1','.hero-kicker','.hero-subtitle','.hero-tag','.hero-flags',
+  '.section-label','.section-title','.lead',
+  '.about-text p','.stat-card .number','.stat-card .label',
+  '.card h3','.card h4','.card p',
+  '.activity-card h3','.activity-card p','.activity-card .day-badge','.breaks',
+  '.big-type h2','.team-header h3','.team-header .count',
+  '.partner-card h4','.partner-card .p-role',
+  '.detail-pane h3','.detail-pane p','.handbook-body h3','.handbook-body p','.sub-title','.sub-lead',
+  '.connect h2','.cbtn span','.footer-line p',
+  '.testi-quote','.testi-name'
+];
+const imageSelectors='.photo-frame, .team-photo-slot, .hero-photo';
+const TOOLKIT_DEFAULTS=[["rocket", "Action Plans", "The follow-up plans of the participants: one local activity with young people using a method from the week, and one internal sharing action. Shared folder, one file per participant.", "https://drive.google.com/drive/folders/1bBvdC-o3zoS4BBrHqipBp8urfgLdIUn8"], ["ai", "Digital Storytelling Videos", "The short films and viral shorts from the Absolute Cinema challenge: Setting the Stage, Real or Fake?, Think Before You Prompt, Storytelling in the Digital Era, Europe Is Listening.", "https://drive.google.com/drive/folders/1sMy0bXjtxrsnqZiZz5pRcd50_Wkwm2SR"], ["book", "Toolkit: Digital & AI Tools for Youth Workers", "The team sheets on tools for theatre and storytelling, video, fact-checking, youth voice and reflection: what each tool does, pricing, privacy, accessibility, a three-step guideline and one concrete use.", "https://drive.google.com/drive/folders/1hsauJSbjsTtyY9i6RoezKgaEh4LYsVKU"], ["scale", "Forum Theatre: Breaking the Barriers", "Participant instructions and facilitator guide: five situations of exclusion, the rules of the forum, the Joker's lines and the debrief for transfer to youth work practice.", ""], ["people", "Theatre & Storytelling Methods", "The Theatre Toolbox research cards, Body Stories, Colombian Hypnosis, Silent Lines and the energisers of the week, ready to run with a group of young people.", ""], ["pen", "AI SWOT & CRAFT Prompts", "The AI SWOT team cards and the matrix with the three rules for AI in youth work, plus the CRAFT worksheet for rewriting weak prompts.", ""], ["globe", "World Caf\u00e9 on Digital Ethics", "Table cards and facilitator guide for the caf\u00e9 on digital responsibility, data protection, academic integrity and youth work ethics, with the harvest of the Amsterdam round.", ""], ["hand", "Human Bingo & Mission Impossible", "The two getting-to-know-you challenges of Day 1, adaptable to any city and any group.", ""]];
+const EDIT_PASSWORD='CREATIVE2026';
+const SB_URL='https://nwbvlyempbzzbjdjvjuq.supabase.co';
+const SB_KEY='sb_publishable_R03HEsUOB96R33cIpI3uMA_8S5dogJs';
+const KP='cf_';
+const SB_HEADERS={apikey:SB_KEY,Authorization:'Bearer '+SB_KEY};
+const IDLE='Edit mode on — changes save automatically';
+function setStatus(m){const s=document.getElementById('edit-status');if(s)s.textContent=m;}
+function flash(m,t){setStatus(m);setTimeout(()=>setStatus(editMode?IDLE:''),t||1500);}
+function assignKeys(){
+  editableSelectors.forEach((sel,si)=>document.querySelectorAll(sel).forEach((el,ei)=>{if(!el.hasAttribute('data-ckey'))el.setAttribute('data-ckey','t_'+si+'_'+ei);}));
+  document.querySelectorAll(imageSelectors).forEach((el,i)=>{if(!el.hasAttribute('data-ckey'))el.setAttribute('data-ckey','img_'+i);});
+}
+function renderImage(slot,url){
+  if(slot._ph===undefined)slot._ph=slot.innerHTML;
+  slot.innerHTML='';const img=document.createElement('img');img.src=url;img.alt='Photo';slot.appendChild(img);
+  slot.style.border='none';slot.style.padding='0';
+  const rb=document.createElement('button');rb.className='slot-remove';rb.type='button';rb.innerHTML='&#x2716;';rb.title='Remove photo';
+  rb.addEventListener('click',e=>{e.stopPropagation();removeSlotImage(slot);});slot.appendChild(rb);
+}
+function clearImageUI(slot){slot.innerHTML=(slot._ph!==undefined?slot._ph:'');slot.style.border='';slot.style.padding='';}
+async function sbDeleteRow(key){try{await fetch(SB_URL+'/rest/v1/content?key=eq.'+encodeURIComponent(KP+key),{method:'DELETE',headers:SB_HEADERS});}catch(e){}}
+async function doSetImage(slot,key,url){renderImage(slot,url+(url.indexOf('?')<0?'?t='+Date.now():''));await sbUpsert(key,'image',url);}
+async function doClearImage(slot,key){clearImageUI(slot);await sbDeleteRow(key);}
+async function removeSlotImage(slot){if(!editMode)return;const key=slot.getAttribute('data-ckey');if(!key)return;
+  if(!confirm('Remove this photo?'))return;const url=(slot.querySelector('img')||{}).src||null;
+  pushAction({t:'image',slot,key,prev:url,next:null});await doClearImage(slot,key);flash('Photo removed ✓');}
+let undoStack=[],redoStack=[];
+function refreshUndoButtons(){const u=document.getElementById('undo-btn'),r=document.getElementById('redo-btn');if(u)u.disabled=!undoStack.length;if(r)r.disabled=!redoStack.length;}
+function pushAction(a){undoStack.push(a);redoStack=[];refreshUndoButtons();}
+async function applyValue(a,v){if(a.t==='text'){if(a.el){a.el.innerHTML=v;await sbUpsert(a.key,'text',v);}}else if(a.t==='image'){if(v)await doSetImage(a.slot,a.key,v);else await doClearImage(a.slot,a.key);}}
+async function doUndo(){if(!undoStack.length)return;const a=undoStack.pop();await applyValue(a,a.prev);redoStack.push(a);refreshUndoButtons();flash('Undone ↶',1200);}
+async function doRedo(){if(!redoStack.length)return;const a=redoStack.pop();await applyValue(a,a.next);undoStack.push(a);refreshUndoButtons();flash('Redone ↷',1200);}
+async function sbUpsert(key,type,value){
+  try{const r=await fetch(SB_URL+'/rest/v1/content?on_conflict=key',{method:'POST',headers:{...SB_HEADERS,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates,return=minimal'},
+    body:JSON.stringify({key:KP+key,type,value,updated_at:new Date().toISOString()})});return r.ok;}catch(e){console.warn('save failed',e);return false;}
+}
+async function sbUploadImage(key,file){
+  try{const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';const path=KP+key+'_'+Date.now()+'.'+ext;
+    const r=await fetch(SB_URL+'/storage/v1/object/photos/'+path,{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':file.type||'application/octet-stream'},body:file});
+    if(!r.ok){console.warn('upload failed',r.status);return null;}return SB_URL+'/storage/v1/object/public/photos/'+path;}catch(e){console.warn('upload error',e);return null;}
+}
+async function sbUploadFile(key,file){
+  try{const safe=(file.name||'file').replace(/[^A-Za-z0-9._-]/g,'_');const path=KP+key+'_'+Date.now()+'_'+safe;
+    const r=await fetch(SB_URL+'/storage/v1/object/photos/'+path,{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':file.type||'application/octet-stream'},body:file});
+    if(!r.ok){console.warn('upload failed',r.status);return null;}return SB_URL+'/storage/v1/object/public/photos/'+path;}catch(e){console.warn('upload error',e);return null;}
+}
+function pickFile(accept,multiple,cb){const input=document.createElement('input');input.type='file';input.accept=accept;input.multiple=!!multiple;input.style.display='none';document.body.appendChild(input);
+  input.addEventListener('change',ev=>{const files=[...ev.target.files];input.remove();if(files.length)cb(files);});input.click();}
+function fmtSize(n){if(!n)return '';return n>1048576?(n/1048576).toFixed(1)+' MB':Math.round(n/1024)+' KB';}
+const DL_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>';
+/* ---- handbook (single file) ---- */
+let handbook=null;
+function renderHandbook(){const row=document.getElementById('handbook-dl');if(!row)return;row.innerHTML='';
+  if(handbook&&handbook.url){const a=document.createElement('a');a.className='dl-btn';a.href=handbook.url;a.target='_blank';a.rel='noopener';a.download='';a.innerHTML=DL_ICON+'<span>Download the Handbook</span>';row.appendChild(a);
+    const m=document.createElement('span');m.className='dl-meta';m.textContent=(handbook.name||'')+(handbook.size?' · '+fmtSize(handbook.size):'');row.appendChild(m);}
+  else{const b=document.createElement('span');b.className='dl-btn soon';b.innerHTML=DL_ICON+'<span>Handbook coming soon</span>';row.appendChild(b);}
+  const up=document.createElement('button');up.type='button';up.className='up-btn';up.innerHTML='&#x2B06; Upload handbook (PDF)';up.onclick=()=>pickFile('.pdf,application/pdf',false,async files=>{setStatus('Uploading handbook…');const url=await sbUploadFile('file_handbook',files[0]);
+    if(url){handbook={url,name:files[0].name,size:files[0].size};await sbUpsert('file_handbook','file',JSON.stringify(handbook));renderHandbook();flash('Handbook saved ✓',2000);}else flash('Upload failed',2000);});row.appendChild(up);
+  if(handbook&&handbook.url){const rm=document.createElement('button');rm.type='button';rm.className='up-btn';rm.innerHTML='&#x2716; Remove file';rm.onclick=async()=>{if(!confirm('Remove the handbook file?'))return;const p=pathFromUrl(handbook.url);if(p)await fetch(SB_URL+'/storage/v1/object/photos/'+p,{method:'DELETE',headers:SB_HEADERS});await sbDeleteRow('file_handbook');handbook=null;renderHandbook();flash('Removed ✓');};row.appendChild(rm);}
+}
+/* ---- toolkit resources ---- */
+let resources={};
+function resKeyDefault(i){return 'res_default_'+i;}
+function renderResources(){const grid=document.getElementById('resources');if(!grid)return;grid.innerHTML='';
+  const list=[];TOOLKIT_DEFAULTS.forEach((d,i)=>{const k=resKeyDefault(i);const r=resources[k];if(r&&r.removed)return;list.push({key:k,icon:d[0],title:(r&&r.title)||d[1],desc:(r&&r.desc)||d[2],url:(r&&r.url)||d[3]||null,fname:r&&r.fname,size:r&&r.size,folder:!(r&&r.url)&&!!d[3]});});
+  Object.keys(resources).filter(k=>k.indexOf('res_default_')!==0).sort().forEach(k=>{const r=resources[k];if(!r||r.removed)return;list.push({key:k,icon:r.icon||'book',title:r.title||'New resource',desc:r.desc||'Describe this resource.',url:r.url,fname:r.fname,size:r.size});});
+  list.forEach(r=>grid.appendChild(makeResCard(r)));
+  const e=document.getElementById('res-empty');if(e)e.style.display=(!list.length&&editMode)?'block':'none';
+  if(editMode)bindResEditing();
+}
+function iconSvg(name){const t=document.getElementById('icon-'+name);return t?t.innerHTML:document.getElementById('icon-book').innerHTML;}
+function makeResCard(r){const c=document.createElement('div');c.className='res-card reveal in';c.setAttribute('data-reskey',r.key);
+  c.innerHTML='<div class="ic-circle">'+iconSvg(r.icon)+'</div><h3 class="res-title"></h3><p class="res-desc"></p>';
+  c.querySelector('.res-title').textContent=r.title;c.querySelector('.res-desc').textContent=r.desc;
+  if(r.url){const a=document.createElement('a');a.className='dl-btn';a.href=r.url;a.target='_blank';a.rel='noopener';if(!r.folder)a.download='';a.innerHTML=DL_ICON+'<span>'+(r.folder?'Open the folder':'Download')+'</span>';c.appendChild(a);
+    const m=document.createElement('span');m.className='dl-meta';m.textContent=r.folder?'Google Drive folder':(r.fname||'')+(r.size?' · '+fmtSize(r.size):'');c.appendChild(m);}
+  else{const b=document.createElement('span');b.className='dl-btn soon';b.innerHTML=DL_ICON+'<span>Coming soon</span>';c.appendChild(b);}
+  const up=document.createElement('button');up.type='button';up.className='up-btn';up.innerHTML='&#x2B06; Upload file';up.onclick=()=>pickFile('*/*',false,async files=>{setStatus('Uploading…');const url=await sbUploadFile(r.key,files[0]);
+    if(url){await saveRes(r.key,{url,fname:files[0].name,size:files[0].size});flash('File saved ✓',2000);}else flash('Upload failed',2000);});c.appendChild(up);
+  const rm=document.createElement('button');rm.type='button';rm.className='remove-btn';rm.innerHTML='&#x2716;';rm.title='Remove resource';rm.onclick=async()=>{if(!confirm('Remove this resource card for everyone?'))return;
+    if(r.url){const p=pathFromUrl(r.url);if(p)await fetch(SB_URL+'/storage/v1/object/photos/'+p,{method:'DELETE',headers:SB_HEADERS});}
+    if(r.key.indexOf('res_default_')===0){await saveRes(r.key,{removed:true,url:null,fname:null,size:null});}else{delete resources[r.key];await sbDeleteRow(r.key);renderResources();}flash('Removed ✓');};c.appendChild(rm);
+  return c;}
+async function saveRes(key,patch){const cur=resources[key]||{};resources[key]={...cur,...patch};await sbUpsert(key,'res',JSON.stringify(resources[key]));renderResources();}
+function bindResEditing(){document.querySelectorAll('#resources .res-card').forEach(c=>{const key=c.getAttribute('data-reskey');['res-title','res-desc'].forEach(cls=>{const el=c.querySelector('.'+cls);el.setAttribute('contenteditable','true');
+  el.addEventListener('blur',async()=>{const field=cls==='res-title'?'title':'desc';const v=el.textContent.trim();if((resources[key]||{})[field]===v)return;const cur=resources[key]||{};resources[key]={...cur,[field]:v};setStatus('Saving…');await sbUpsert(key,'res',JSON.stringify(resources[key]));flash('Saved ✓');});});});}
+function addResource(){if(!editMode)return;const key='res_'+Date.now()+'_'+Math.floor(Math.random()*100000);saveRes(key,{icon:'book',title:'New resource',desc:'Click to describe this resource, then upload the file.'});}
+/* ---- campaign: visuals wall + links ---- */
+function makeOppItem(key,url){const it=makeWallItem(key,url);it.setAttribute('data-wall','opp');return it;}
+function renderOpp(rows){const w=document.getElementById('opp-wall');if(!w)return;w.innerHTML='';rows.forEach(r=>w.appendChild(makeOppItem(r.key,r.value)));const e=document.getElementById('opp-empty');if(e)e.style.display=(!rows.length&&editMode)?'block':'none';}
+function addOppPhoto(){if(!editMode)return;pickFile('image/*',true,async files=>{const w=document.getElementById('opp-wall');const e=document.getElementById('opp-empty');if(e)e.style.display='none';
+  for(let i=0;i<files.length;i++){setStatus('Uploading visual '+(i+1)+' of '+files.length+'…');const key='opp_'+Date.now()+'_'+i+'_'+Math.floor(Math.random()*100000);const url=await sbUploadImage(key,files[i]);
+    if(url&&await sbUpsert(key,'opp',url))w.appendChild(makeOppItem(key,url+'?t='+Date.now()));else setStatus('A visual failed to upload');}flash('Visuals added ✓',2000);});}
+let links={};
+function platformOf(u){u=(u||'').toLowerCase();if(u.includes('instagram'))return 'ig';if(u.includes('tiktok'))return 'tt';if(u.includes('facebook')||u.includes('fb.watch'))return 'fb';if(u.includes('youtu'))return 'yt';return 'web';}
+const PLAT_ICON={ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  tt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.3 1.8 4 4.5 4.2v3.1c-1.6 0-3.1-.5-4.5-1.4v6.3A5.8 5.8 0 1 1 10.7 9.4v3.2a2.7 2.7 0 1 0 2.7 2.7V3h3.1z"/></svg>',
+  fb:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.9-4 4.3V11H7v4h3v6h4v-6h3l1-4h-4V8.7c0-.5.3-.7 1-.7z"/></svg>',
+  yt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15V9l5.8 3-5.8 3z"/></svg>',
+  web:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'};
+const PLAT_NAME={ig:'Instagram',tt:'TikTok',fb:'Facebook',yt:'YouTube',web:'Link'};
+function renderLinks(){const g=document.getElementById('opp-links');if(!g)return;g.innerHTML='';const keys=Object.keys(links).sort();
+  keys.forEach(k=>{const l=links[k];const p=platformOf(l.url);const a=document.createElement('a');a.className='link-card';a.href=l.url;a.target='_blank';a.rel='noopener';
+    a.innerHTML='<div class="lk-ic '+p+'">'+PLAT_ICON[p]+'</div><div><h4></h4><div class="lk-url"></div></div>';a.querySelector('h4').textContent=l.title||PLAT_NAME[p]+' post';a.querySelector('.lk-url').textContent=PLAT_NAME[p]+' · '+l.url.replace(/^https?:\/\//,'').slice(0,48);
+    const ed=document.createElement('button');ed.type='button';ed.className='edit-link';ed.innerHTML='&#x270E;';ed.title='Edit';ed.onclick=e=>{e.preventDefault();e.stopPropagation();editLink(k);};a.appendChild(ed);
+    const rm=document.createElement('button');rm.type='button';rm.className='remove-btn';rm.innerHTML='&#x2716;';rm.title='Remove link';rm.onclick=async e=>{e.preventDefault();e.stopPropagation();if(!confirm('Remove this link for everyone?'))return;delete links[k];await sbDeleteRow(k);renderLinks();flash('Removed ✓');};a.appendChild(rm);
+    a.addEventListener('click',e=>{if(editMode){e.preventDefault();}});g.appendChild(a);});
+  const e=document.getElementById('links-empty');if(e)e.style.display=(!keys.length&&editMode)?'block':'none';}
+async function addLink(){if(!editMode)return;const url=prompt('Paste the link to the post or reel (Instagram, TikTok, Facebook, YouTube…):');if(!url)return;const title=prompt('Title for this post (optional):')||'';
+  const key='lnk_'+Date.now()+'_'+Math.floor(Math.random()*100000);links[key]={url:url.trim(),title:title.trim()};await sbUpsert(key,'opplink',JSON.stringify(links[key]));renderLinks();flash('Link added ✓');}
+async function editLink(k){const l=links[k];const url=prompt('Link:',l.url);if(url===null)return;const title=prompt('Title:',l.title||'');if(title===null)return;links[k]={url:url.trim(),title:title.trim()};await sbUpsert(k,'opplink',JSON.stringify(links[k]));renderLinks();flash('Saved ✓');}
+/* ---- detail modal ---- */
+let openPane=null;
+function openDetail(id){const pane=document.getElementById('detail_'+id);if(!pane)return;const box=document.getElementById('modal-body');box.innerHTML='';box.appendChild(pane);openPane=pane;document.getElementById('detail-modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDetail(){if(openPane){document.getElementById('detail-store').appendChild(openPane);openPane=null;}document.getElementById('detail-modal').classList.remove('open');document.body.style.overflow='';}
+async function saveText(el){const key=el.getAttribute('data-ckey');if(!key)return;setStatus('Saving…');const ok=await sbUpsert(key,'text',el.innerHTML);setStatus(ok?'Saved ✓':'Save failed — check connection');if(ok)setTimeout(()=>setStatus(editMode?IDLE:''),1500);}
+async function loadContent(){
+  assignKeys();
+  try{const r=await fetch(SB_URL+'/rest/v1/content?select=key,type,value&key=like.'+KP+'*&order=key.asc',{headers:SB_HEADERS});if(!r.ok)return;const rows=await r.json();const map={};
+    rows.forEach(x=>{if(x.key&&x.key.indexOf(KP)===0)map[x.key.slice(KP.length)]=x;});
+    document.querySelectorAll('[data-ckey]').forEach(el=>{const x=map[el.getAttribute('data-ckey')];if(!x)return;if(x.type==='text')el.innerHTML=x.value;else if(x.type==='image'&&x.value)renderImage(el,x.value);});
+    renderWall(rows.filter(x=>x.type==='wall'&&x.value).map(x=>({key:x.key.slice(KP.length),value:x.value})));
+    renderOpp(rows.filter(x=>x.type==='opp'&&x.value).map(x=>({key:x.key.slice(KP.length),value:x.value})));
+    const hb=map['file_handbook'];if(hb&&hb.type==='file'){try{handbook=JSON.parse(hb.value);}catch(e){}}
+    rows.filter(x=>x.type==='res').forEach(x=>{try{resources[x.key.slice(KP.length)]=JSON.parse(x.value);}catch(e){}});
+    rows.filter(x=>x.type==='opplink').forEach(x=>{try{links[x.key.slice(KP.length)]=JSON.parse(x.value);}catch(e){}});
+  }catch(e){console.warn('load failed',e);}
+  renderHandbook();renderResources();renderLinks();
+}
+function pathFromUrl(url){const p=url.split('/storage/v1/object/public/photos/');return p[1]?p[1].split('?')[0]:null;}
+function makeWallItem(key,url){const item=document.createElement('div');item.className='wall-item';item.setAttribute('data-wallkey',key);
+  const img=document.createElement('img');img.src=url;img.alt='Project photo';img.loading='lazy';item.appendChild(img);
+  item.addEventListener('click',()=>{if(!editMode)openLightbox(item);});
+  const b=document.createElement('button');b.className='remove-btn';b.innerHTML='&#x2716;';b.title='Remove photo';b.onclick=(e)=>{e.stopPropagation();removeWallPhoto(key,url,item);};item.appendChild(b);return item;}
+function renderWall(rows){const wall=document.getElementById('photo-wall');if(!wall)return;wall.innerHTML='';rows.forEach(r=>wall.appendChild(makeWallItem(r.key,r.value)));
+  const e=document.getElementById('wall-empty');if(e)e.style.display=(!rows.length&&editMode)?'block':'none';}
+function addWallPhoto(){if(!editMode)return;const input=document.createElement('input');input.type='file';input.accept='image/*';input.multiple=true;input.style.display='none';document.body.appendChild(input);
+  input.addEventListener('change',async(ev)=>{const files=[...ev.target.files];input.remove();if(!files.length)return;const wall=document.getElementById('photo-wall');const e=document.getElementById('wall-empty');if(e)e.style.display='none';
+    for(let i=0;i<files.length;i++){setStatus('Uploading photo '+(i+1)+' of '+files.length+'…');const key='wall_'+Date.now()+'_'+i+'_'+Math.floor(Math.random()*100000);const url=await sbUploadImage(key,files[i]);
+      if(url&&await sbUpsert(key,'wall',url)){wall.appendChild(makeWallItem(key,url+'?t='+Date.now()));}else{setStatus('A photo failed to upload — please try again');}}
+    flash('Photos added ✓',2000);});input.click();}
+async function removeWallPhoto(key,url,item){if(!editMode)return;if(!confirm('Remove this photo for everyone?'))return;setStatus('Removing…');
+  try{await fetch(SB_URL+'/rest/v1/content?key=eq.'+encodeURIComponent(KP+key),{method:'DELETE',headers:SB_HEADERS});const p=pathFromUrl(url);if(p)await fetch(SB_URL+'/storage/v1/object/photos/'+p,{method:'DELETE',headers:SB_HEADERS});item.remove();flash('Removed ✓');}
+  catch(e){console.warn('remove failed',e);setStatus('Remove failed');}}
+function toggleEdit(){
+  if(!editMode){const input=prompt('Enter edit password:');if(input!==EDIT_PASSWORD){if(input!==null)alert('Wrong password.');return;}}
+  editMode=!editMode;const btn=document.getElementById('toggle-edit');
+  if(editMode){assignKeys();document.body.classList.add('editing');btn.classList.add('active');btn.innerHTML='&#x2716; Exit Edit';setStatus(IDLE);
+    const ab=document.getElementById('add-photo-btn');if(ab)ab.style.display='inline-block';
+    const e=document.getElementById('wall-empty');if(e&&!document.querySelector('#photo-wall .wall-item'))e.style.display='block';
+    editableSelectors.forEach(sel=>document.querySelectorAll(sel).forEach(el=>{el.setAttribute('contenteditable','true');
+      if(!el.dataset.boundBlur){el.addEventListener('focus',()=>{el._prevText=el.innerHTML;});
+        el.addEventListener('blur',()=>{const prev=el._prevText,next=el.innerHTML;saveText(el);if(prev!==undefined&&prev!==next)pushAction({t:'text',el,key:el.getAttribute('data-ckey'),prev,next});});el.dataset.boundBlur='1';}}));
+    document.querySelectorAll(imageSelectors).forEach(el=>el.addEventListener('click',handleImageClick));
+    ['undo-btn','redo-btn'].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display='inline-block';});refreshUndoButtons();
+    renderResources();renderLinks();const oe=document.getElementById('opp-empty');if(oe&&!document.querySelector('#opp-wall .wall-item'))oe.style.display='block';
+  }else{document.body.classList.remove('editing');btn.classList.remove('active');btn.innerHTML='&#x270F; Edit Mode';setStatus('');
+    const ab=document.getElementById('add-photo-btn');if(ab)ab.style.display='none';const e=document.getElementById('wall-empty');if(e)e.style.display='none';
+    editableSelectors.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.removeAttribute('contenteditable')));
+    document.querySelectorAll(imageSelectors).forEach(el=>el.removeEventListener('click',handleImageClick));undoStack=[];redoStack=[];
+    ['undo-btn','redo-btn'].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display='none';});
+    renderResources();renderLinks();['opp-empty','links-empty','res-empty'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});}
+}
+function handleImageClick(e){if(!editMode)return;e.stopPropagation();const slot=e.currentTarget;const key=slot.getAttribute('data-ckey');const prevUrl=(slot.querySelector('img')||{}).src||null;
+  const input=document.createElement('input');input.type='file';input.accept='image/*';input.style.display='none';document.body.appendChild(input);
+  input.addEventListener('change',async(ev)=>{const file=ev.target.files[0];input.remove();if(!file)return;setStatus('Uploading photo…');const url=await sbUploadImage(key,file);
+    if(url){renderImage(slot,url+'?t='+Date.now());await sbUpsert(key,'image',url);pushAction({t:'image',slot,key,prev:prevUrl,next:url});flash('Photo saved ✓',2000);}else{flash('Upload failed — please try again',2000);}});input.click();}
+/* lightbox */
+let lbIndex=0;
+let lbWall='#photo-wall';
+function wallImgs(){return [...document.querySelectorAll(lbWall+' .wall-item img')].map(i=>i.src);}
+function openLightbox(item){lbWall='#'+item.parentElement.id;const imgs=[...document.querySelectorAll(lbWall+' .wall-item')];lbIndex=imgs.indexOf(item);showLb();document.getElementById('lightbox').classList.add('open');}
+function showLb(){const s=wallImgs();if(!s.length)return;lbIndex=(lbIndex+s.length)%s.length;document.getElementById('lb-img').src=s[lbIndex];document.getElementById('lb-count').textContent=(lbIndex+1)+' / '+s.length;}
+function closeLb(){document.getElementById('lightbox').classList.remove('open');}
+/* ui */
+function countUp(el){const raw=(el.textContent||'').trim();const t=parseInt(raw,10);if(isNaN(t))return;const d=1100,t0=performance.now();(function s(n){const p=Math.min(1,(n-t0)/d);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s);else el.textContent=raw;})(t0);}
+document.addEventListener('DOMContentLoaded',()=>{
+  loadContent();
+  const tb=document.getElementById('toggle-edit');if(tb)tb.addEventListener('click',toggleEdit);
+  const ub=document.getElementById('undo-btn');if(ub)ub.addEventListener('click',doUndo);const rb=document.getElementById('redo-btn');if(rb)rb.addEventListener('click',doRedo);
+  const ab=document.getElementById('add-photo-btn');if(ab)ab.addEventListener('click',addWallPhoto);
+  document.getElementById('add-res-btn').addEventListener('click',addResource);document.getElementById('add-link-btn').addEventListener('click',addLink);document.getElementById('add-opp-btn').addEventListener('click',addOppPhoto);
+  document.querySelectorAll('[data-detail]').forEach(c=>{c.classList.add('clickable');const b=document.createElement('button');b.type='button';b.className='detail-btn';b.textContent='ℹ Edit details';c.appendChild(b);
+    c.addEventListener('click',e=>{if(editMode&&!e.target.closest('.detail-btn'))return;e.preventDefault();openDetail(c.getAttribute('data-detail'));});});
+  document.getElementById('modal-close').onclick=closeDetail;document.getElementById('detail-modal').addEventListener('click',e=>{if(e.target.id==='detail-modal')closeDetail();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
+  document.getElementById('lb-close').onclick=closeLb;document.getElementById('lb-prev').onclick=()=>{lbIndex--;showLb();};document.getElementById('lb-next').onclick=()=>{lbIndex++;showLb();};
+  document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLb();});
+  document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft'){lbIndex--;showLb();}if(e.key==='ArrowRight'){lbIndex++;showLb();}});
+  const nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');nt.addEventListener('click',()=>nl.classList.toggle('open'));nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const so=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){countUp(en.target);so.unobserve(en.target);}}),{threshold:.6});
+  document.querySelectorAll('.stat-card .number').forEach(el=>so.observe(el));
+  const secs=[...document.querySelectorAll('section[id]')],links=[...document.querySelectorAll('.nav-links a')],bt=document.getElementById('backTop'),pr=document.getElementById('scrollProg');
+  function onScroll(){const y=window.scrollY;pr.style.width=(y/(document.body.scrollHeight-innerHeight)*100)+'%';bt.classList.toggle('show',y>600);
+    let cur='';secs.forEach(s=>{if(y>=s.offsetTop-140)cur=s.id;});links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();bt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
